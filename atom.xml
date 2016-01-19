@@ -1,0 +1,830 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[Wentong&#39;s Blog]]></title>
+  
+  <link href="/atom.xml" rel="self"/>
+  <link href="http://blog.wentong.me/"/>
+  <updated>2016-01-19T11:40:28.000Z</updated>
+  <id>http://blog.wentong.me/</id>
+  
+  <author>
+    <name><![CDATA[fangwentong]]></name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[几款消息中间的调研]]></title>
+    <link href="http://blog.wentong.me/2016/01/message-queue-research/"/>
+    <id>http://blog.wentong.me/2016/01/message-queue-research/</id>
+    <published>2016-01-18T18:24:21.000Z</published>
+    <updated>2016-01-19T11:40:28.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="u6D88_u606F_u961F_u5217_u8C03_u7814"><a href="#u6D88_u606F_u961F_u5217_u8C03_u7814" class="headerlink" title="消息队列调研"></a>消息队列调研</h2><h3 id="u6D88_u606F_u7CFB_u7EDF_u7B80_u4ECB"><a href="#u6D88_u606F_u7CFB_u7EDF_u7B80_u4ECB" class="headerlink" title="消息系统简介"></a>消息系统简介</h3><p>本次主要调研业界使用广泛的两款消息队列——RabbitMQ, Kafka， 以及阿里云的提供的两个服务， MNS和ONS.</p>
+<h4 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h4><blockquote>
+<p><a href="http://www.rabbitmq.com" target="_blank" rel="external">RabbitMQ</a> 是使用Erlang编写的一个开源的消息队列，本身支持很多的协议：AMQP，XMPP, SMTP, STOMP，也正因如此，它非常重量级，更适合于企业级的开发。同时实现了Broker构架，这意味着消息在发送给客户端时先在中心队列排队。对路由，负载均衡或者数据持久化都有很好的支持。</p>
+</blockquote>
+<h4 id="u963F_u91CC_u4E91MNS"><a href="#u963F_u91CC_u4E91MNS" class="headerlink" title="阿里云MNS"></a>阿里云MNS</h4><ul>
+<li><a href="https://www.aliyun.com/product/mns" target="_blank" rel="external">MNS产品介绍</a></li>
+</ul>
+<blockquote>
+<p>阿里云消息服务（Message Service，原MQS）是阿里云唯一商用的消息中间件服务。与传统的消息中间件不同，消息服务一开始就是基于阿里云自主研发的飞天分布式系统来设计和实现，具有大规模，高可靠、高并发访问和超强消息堆积能力的特点。消息服务API采用HTTP RESTful标准，接入方便，跨网络能力强；已全面接入资源访问控制服务（RAM）、专有网络（VPC），支持各种安全访问控制；接入云监控，提供完善的监控及报警机制。消息服务提供丰富的SDK、解决方案、最佳实践和7x24小时的技术支持，帮助应用开发者在应用组件之间自由地传递数据和构建松耦合、分布式、高可用系统。</p>
+</blockquote>
+<h4 id="u963F_u91CC_u4E91ONS_/_RocketMQ"><a href="#u963F_u91CC_u4E91ONS_/_RocketMQ" class="headerlink" title="阿里云ONS / RocketMQ"></a>阿里云ONS / RocketMQ</h4><ul>
+<li><a href="https://www.aliyun.com/product/ons" target="_blank" rel="external">ONS产品介绍</a></li>
+<li><a href="https://github.com/alibaba/RocketMQ" target="_blank" rel="external">ONS开源社区对应产品——RocketMQ</a></li>
+</ul>
+<blockquote>
+<p>消息队列（Message Queue，简称MQ）是企业级互联网架构的核心服务，基于高可用分布式集群技术，搭建了包括发布订阅、接入、管理、监控报警等一套完整的高性能消息云服务，帮您实现分布式计算场景中所有异步解耦功能。经过多年积累，在交易、商品、营销等核心链路包括在双11场景下都有广泛使用，服务于阿里内部上千个核心应用，每天消息量达上千亿条，MQ由阿里巴巴集团中间件技术部自主研发，是原汁原味的阿里集团中间件技术精华之沉淀。</p>
+</blockquote>
+<h4 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h4><blockquote>
+<p>Kafka是Apache下的一个子项目，是一个高性能跨语言分布式发布/订阅消息队列系统。具有以下特性：快速持久化，可以在O(1)的系统开销下进行消息持久化；高吞吐，在一台普通的服务器上既可以达到10W/s的吞吐速率；完全的分布式系统，Broker、Producer、Consumer都原生自动支持分布式，自动实现负载均衡.</p>
+</blockquote>
+<p>Kafka的用户中包括LinkedIn, Yahoo, Twitter, Uber, PayPal, Airbnb, Tumblr等,  被用于日志收集， 离线分析， 实时分析, 消息管道等, 详情见 <a href="https://cwiki.apache.org/confluence/display/KAFKA/Powered+By" target="_blank" rel="external">Powerd By Kafka</a></p>
+<p>Kafka官方提供了Java版本的客户端API,  Kafka社区产生了多种语言的客户端, 包括PHP, Python, Go, C/C++, Ruby, NodeJS等, 详情见 <a href="https://cwiki.apache.org/confluence/display/KAFKA/Clients" target="_blank" rel="external">Kafka 客户端列表</a></p>
+<p>Kafka Broker较为轻量, 不保存consumer的消费进度, 由consumer自己控制。 因此使用起来非常灵活， 可以针对不同场景定制不同的消费服务.</p>
+<ul>
+<li>Exactly Once: 消费且仅消费一次</li>
+<li>回溯数据, 进行重复消费</li>
+</ul>
+<p>目前Kafka的管理界面不友好, 官方只给了命令行工具. 通过命令行工具能简单地查看和操作Topic.  Yahoo开源了自己的Kafka Web管理界面 <a href="https://github.com/yahoo/kafka-manager" target="_blank" rel="external">Kafka-Manager</a>,  但不支持最新的0.9.0版本的部分功能.</p>
+<h3 id="Kafka_2C_RabbitMQ_2C_MNS_2C_ONS_u5BF9_u6BD4"><a href="#Kafka_2C_RabbitMQ_2C_MNS_2C_ONS_u5BF9_u6BD4" class="headerlink" title="Kafka, RabbitMQ, MNS, ONS对比"></a>Kafka, RabbitMQ, MNS, ONS对比</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">–</th>
+<th style="text-align:center">Kafka</th>
+<th style="text-align:center">RabbitMQ</th>
+<th style="text-align:center">MNS</th>
+<th style="text-align:center">ONS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">所属社区/公司</td>
+<td style="text-align:center">Apache</td>
+<td style="text-align:center">Mozilla Public License</td>
+<td style="text-align:center">Alibaba</td>
+<td style="text-align:center">Alibaba</td>
+</tr>
+<tr>
+<td style="text-align:center">成熟度</td>
+<td style="text-align:center">成熟</td>
+<td style="text-align:center">成熟</td>
+<td style="text-align:center">成熟</td>
+<td style="text-align:center">比较成熟,公测中</td>
+</tr>
+<tr>
+<td style="text-align:center">特点</td>
+<td style="text-align:center">充分考虑消息堆积因素,认为 consumer 不一定处于 alive 状态;考虑各个角色的分布式; 为追求吞吐量设计;被<a href="https://cwiki.apache.org/confluence/display/KAFKA/Powered+By" target="_blank" rel="external">多家公司</a>和多个开源项目使用</td>
+<td style="text-align:center">由于Erlang语言的并发能力，性能很好, 支持多种协议，<strong>重量级系统</strong></td>
+<td style="text-align:center">消息服务API采用HTTP RESTful标准，接入方便，跨网络能力强</td>
+<td style="text-align:center">高性能, 支持数据海量堆积, <strong>支持主动推送</strong></td>
+</tr>
+<tr>
+<td style="text-align:center">授权方式</td>
+<td style="text-align:center">开源</td>
+<td style="text-align:center">开源</td>
+<td style="text-align:center">商业</td>
+<td style="text-align:center">商业，有对应的开源项目<a href="https://github.com/alibaba/RocketMQ" target="_blank" rel="external">RocketMQ</a></td>
+</tr>
+<tr>
+<td style="text-align:center">开发语言</td>
+<td style="text-align:center">Scala&amp;Java</td>
+<td style="text-align:center">Erlang</td>
+<td style="text-align:center">Java</td>
+<td style="text-align:center">Java</td>
+</tr>
+<tr>
+<td style="text-align:center">客户端支持语言</td>
+<td style="text-align:center">官方支持Java, 开源社区有多语言版本, 如PHP, Python, Go, C/C++, Ruby, NodeJS等编程语言, 详见 <a href="https://cwiki.apache.org/confluence/display/KAFKA/Clients" target="_blank" rel="external">Kafka 客户端列表</a></td>
+<td style="text-align:center">官方支持Erlang, Java, Ruby等, 社区产出多种语言API，详见<a href="http://www.rabbitmq.com/devtools.html" target="_blank" rel="external">RabbitMQ客户端&amp;开发工具</a></td>
+<td style="text-align:center">Java, C++, Python, C#, PHP, Node.js(非官方), Golang(非官方)</td>
+<td style="text-align:center">Java, C/C++, C#, PHP</td>
+</tr>
+<tr>
+<td style="text-align:center">协议支持</td>
+<td style="text-align:center">自有协议，社区封装了HTTP协议支持</td>
+<td style="text-align:center">多协议支持:AMQP，XMPP, SMTP, STOMP</td>
+<td style="text-align:center">HTTP</td>
+<td style="text-align:center">ONS私有协议</td>
+</tr>
+<tr>
+<td style="text-align:center">消息批量操作</td>
+<td style="text-align:center"><strong>支持</strong></td>
+<td style="text-align:center">不支持</td>
+<td style="text-align:center"><strong>支持</strong></td>
+<td style="text-align:center">不支持</td>
+</tr>
+<tr>
+<td style="text-align:center">消息推拉模式</td>
+<td style="text-align:center">Pull</td>
+<td style="text-align:center">多协议, Pull/Push均有支持</td>
+<td style="text-align:center">Pull</td>
+<td style="text-align:center">Pull, Push</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">保证消息至少消费一次</td>
+<td style="text-align:center">默认保证</td>
+<td style="text-align:center">保证</td>
+<td style="text-align:center">在消息<strong>有效期内</strong>，确保消息至少能被成功消费一次。</td>
+<td style="text-align:center">不保证(消费失败16次后丢弃)</td>
+</tr>
+<tr>
+<td style="text-align:center">消息回溯</td>
+<td style="text-align:center"><strong>支持</strong></td>
+<td style="text-align:center">消费完即删除, 不支持回溯</td>
+<td style="text-align:center">消费完即删除, 不支持回溯</td>
+<td style="text-align:center"><strong>支持</strong></td>
+</tr>
+<tr>
+<td style="text-align:center">HA</td>
+<td style="text-align:center">支持replica机制, leader宕掉后, 备份自动顶替， 并重新选举leader(基于Zookeeper)</td>
+<td style="text-align:center">master/slave模式, master提供服务, slave仅作备份</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:center">数据可靠性</td>
+<td style="text-align:center">上周的测试中, 使用Kafka作为消息中间件， 数据可靠， 并且有replica机制, 有容错容灾能力</td>
+<td style="text-align:center">可以保证数据不丢, 有slave用作备份</td>
+<td style="text-align:center">数据三重备份, 可靠性达<strong>10个9</strong> (官方数据)</td>
+<td style="text-align:center">99.99% (官方数据)</td>
+</tr>
+<tr>
+<td style="text-align:center">QPS</td>
+<td style="text-align:center"><strong>性能卓越</strong>, 详见下文<em>Linkedin团队的测试</em></td>
+<td style="text-align:center">性能优秀， 详见下文<em>Linkedin团队的测试</em></td>
+<td style="text-align:center">默认4000</td>
+<td style="text-align:center">默认5000</td>
+</tr>
+<tr>
+<td style="text-align:center">持久化能力</td>
+<td style="text-align:center">磁盘文件, 只要磁盘容量够， 可以做到<strong>无限消息堆积</strong></td>
+<td style="text-align:center">内存、文件，支持数据堆积,但数据堆积反过来影响生产速率</td>
+<td style="text-align:center">消息持久化默认有期限, 支持海量堆积</td>
+<td style="text-align:center">ONS消息默认保留三天，支持海量堆积</td>
+</tr>
+<tr>
+<td style="text-align:center">是否有序</td>
+<td style="text-align:center"><strong>多Client保证有序</strong></td>
+<td style="text-align:center">若想有序，只能使用一个Client</td>
+<td style="text-align:center">不保证有序</td>
+<td style="text-align:center">不保证有序</td>
+</tr>
+<tr>
+<td style="text-align:center">事务</td>
+<td style="text-align:center">不支持, 但可以通过Low Level API保证仅消费一次</td>
+<td style="text-align:center">不支持</td>
+<td style="text-align:center">不支持</td>
+<td style="text-align:center"><strong>支持</strong></td>
+</tr>
+<tr>
+<td style="text-align:center">集群</td>
+<td style="text-align:center">支持</td>
+<td style="text-align:center">支持</td>
+<td style="text-align:center">支持</td>
+<td style="text-align:center">支持</td>
+</tr>
+<tr>
+<td style="text-align:center">负载均衡</td>
+<td style="text-align:center">支持</td>
+<td style="text-align:center">支持</td>
+<td style="text-align:center">支持</td>
+<td style="text-align:center">支持</td>
+</tr>
+<tr>
+<td style="text-align:center">管理界面</td>
+<td style="text-align:center">官方只提供了命令行版, Yahoo开源自己的Kafka Web管理界面<a href="https://github.com/yahoo/kafka-manager" target="_blank" rel="external">Kafka-Manager</a></td>
+<td style="text-align:center">较好</td>
+<td style="text-align:center">好</td>
+<td style="text-align:center">好</td>
+</tr>
+<tr>
+<td style="text-align:center">部署方式</td>
+<td style="text-align:center">独立</td>
+<td style="text-align:center">独立</td>
+<td style="text-align:center">Aliyun提供服务</td>
+<td style="text-align:center">Aliyun提供服务,可以独立部署</td>
+</tr>
+</tbody>
+</table>
+<h3 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h3><ol>
+<li>事务支持方面，ONS/RocketMQ较为优秀，但是不支持消息批量操作, 不保证消息至少被消费一次. </li>
+<li>Kafka提供完全分布式架构, 并有replica机制, 拥有较高的可用性和可靠性, 理论上支持消息无限堆积, 支持批量操作, 消费者采用Pull方式获取消息, 消息有序, 通过控制能够保证所有消息被消费且仅被消费一次. 但是官方提供的运维工具不友好，开源社区的运维工具支持的版本一般落后于最新版本的Kafka.</li>
+<li>目前使用的MNS服务，拥有HTTP REST API,  使用简单, 数据可靠性高,  但是不保证消息有序，不能回溯数据.</li>
+<li>RabbitMQ为重量级消息系统， 支持多协议(很多协议是目前业务用不到的),  但是不支持回溯数据,  master挂掉之后， 需要手动从slave恢复, 可用性略逊一筹.</li>
+</ol>
+<h4 id="u9644_3A_LinkedIn_u56E2_u961F_u5BF9Kafka_2C_RabbitMQ_2C_ActiveMQ_u7684_u6027_u80FD_u7814_u7A76"><a href="#u9644_3A_LinkedIn_u56E2_u961F_u5BF9Kafka_2C_RabbitMQ_2C_ActiveMQ_u7684_u6027_u80FD_u7814_u7A76" class="headerlink" title="附: LinkedIn团队对Kafka, RabbitMQ, ActiveMQ的性能研究"></a>附: LinkedIn团队对Kafka, RabbitMQ, ActiveMQ的性能研究</h4><h5 id="u751F_u4EA7_u8005_u6D4B_u8BD5"><a href="#u751F_u4EA7_u8005_u6D4B_u8BD5" class="headerlink" title="生产者测试"></a>生产者测试</h5><p>LinkedIn团队在所有系统中配置代理，异步将消息刷入其持久化库。对每个系统，运行一个生产者，总共发布1000万条消息，每条消息200字节。Kafka生产者以1和50批量方式发送消息。ActiveMQ和RabbitMQ似乎没有简单的办法来批量发送消息，LinkedIn假定它的批量值为1。结果如下图所示：</p>
+<p><img src="/uploads/image/2016/kafka-consumer-qps.png" alt="Kafka生产者测试"></p>
+<h5 id="u6D88_u8D39_u8005_u6D4B_u8BD5"><a href="#u6D88_u8D39_u8005_u6D4B_u8BD5" class="headerlink" title="消费者测试"></a>消费者测试</h5><p>为了做消费者测试，LinkedIn使用一个消费者获取总共1000万条消息。LinkedIn让所有系统每次拉请求都预获取大约相同数量的数据，最多1000条消息或者200KB。对ActiveMQ和RabbitMQ，LinkedIn设置消费者确认模型为自动。结果如下图所示</p>
+<p><img src="/uploads/image/2016/kafka-consumer-qps.png" alt="Kafka消费者测试"></p>
+<p>参考文档:</p>
+<ul>
+<li><a href="https://www.aliyun.com/product/mns" target="_blank" rel="external">MNS官方文档</a></li>
+<li><a href="https://www.aliyun.com/product/ons" target="_blank" rel="external">ONS官方文档</a></li>
+<li><a href="http://www.rabbitmq.com/api-guide.html" target="_blank" rel="external">RabbitMQ Java Client API Guide</a></li>
+<li><a href="http://www.infoq.com/cn/articles/kafka-analysis-part-5" target="_blank" rel="external">Kafka基准测试</a></li>
+<li><a href="http://www.infoq.com/cn/articles/linkedIn-improving-kafka" target="_blank" rel="external">LinkedIn是如何优化Kafka的</a></li>
+<li><a href="http://kafka.apache.org/07/performance.html" target="_blank" rel="external">Apache Kafka 官方性能报告</a></li>
+<li><a href="http://www.infoq.com/cn/articles/kafka-analysis-part-1" target="_blank" rel="external">Kafka剖析（一）：Kafka背景及架构介绍</a></li>
+<li><a href="http://www.infoq.com/cn/articles/apache-kafka" target="_blank" rel="external">Apache Kafka：下一代分布式消息系统</a></li>
+<li><a href="https://github.com/alibaba/RocketMQ/wiki/rmq_vs_kafka" target="_blank" rel="external">RocketMQ与Kafka对比（18项差异）</a></li>
+<li><a href="http://blog.csdn.net/yangbutao/article/details/8741977" target="_blank" rel="external">Kafka, RabbitMQ对比</a></li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="u6D88_u606F_u961F_u5217_u8C03_u7814"><a href="#u6D88_u606F_u961F_u5217_u8C03_u7814" class="headerlink" title="消息队列调研"></a>消息队列调研</h2]]>
+    </summary>
+    
+      <category term="kafka" scheme="http://blog.wentong.me/tags/kafka/"/>
+    
+      <category term="middleware" scheme="http://blog.wentong.me/tags/middleware/"/>
+    
+      <category term="sumary" scheme="http://blog.wentong.me/categories/sumary/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[使用Nginx做内网域名转发]]></title>
+    <link href="http://blog.wentong.me/2015/03/Nginx-Local-Area-Network-Domain-Forward/"/>
+    <id>http://blog.wentong.me/2015/03/Nginx-Local-Area-Network-Domain-Forward/</id>
+    <published>2015-03-24T16:00:00.000Z</published>
+    <updated>2016-01-19T03:56:23.000Z</updated>
+    <content type="html"><![CDATA[<p>下面这个例子是通过具有公网IP的网关上的反向代理，将域名<code>demo.wenotng.me</code>的请求转发到内网机器<code>192.168.1.100</code>上，这样就可以在公网上通过域名<code>demo.wentong.me</code>访问内网的机器了.</p>
+<p>1) 第一步，添加一条A记录(Adress),  demo.wentong.me 指向网关的公网IP.</p>
+<p>2) 添加Nginx配置:</p>
+<p>网关服务器nginx配置:</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="comment"># /etc/nginx/sites-enable/demo</span></span><br><span class="line"><span class="title">server</span> &#123;</span><br><span class="line">    <span class="title">listen</span>   <span class="number">80</span>;</span><br><span class="line">    <span class="title">server_name</span>  demo.wentong.me;</span><br><span class="line"></span><br><span class="line">    <span class="title">access_log</span>  /var/log/nginx/demo.access.log;</span><br><span class="line"></span><br><span class="line">    <span class="title">location</span> / &#123;</span><br><span class="line">        <span class="title">proxy_redirect</span> <span class="built_in">off</span>;</span><br><span class="line">        <span class="title">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">        <span class="title">proxy_set_header</span> User-Agent <span class="variable">$http_user_agent</span>;</span><br><span class="line">        <span class="title">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="title">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        <span class="title">proxy_pass</span> <span class="url">http://192.168.1.100</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>上面这些配置无非是将一些发给网关的请求的<code>Request Headers</code>中信息，<br>转发给<code>192.168.1.100</code>这台机器，实现反向代理. <strong>注意</strong>，<br>这里要对<code>Host</code>字段进行转发，以便下级服务器据此域名判断应用哪个配置.</p>
+<p>内网机器作常规设置即可</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="comment"># /etc/nginx/sites-enable/demo</span></span><br><span class="line"><span class="title">server</span> &#123;</span><br><span class="line">    <span class="title">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="title">server_name</span> demo.wentong.me;</span><br><span class="line"></span><br><span class="line">    <span class="title">root</span> /local/path/here;</span><br><span class="line">    <span class="title">index</span> index.html index.htm;</span><br><span class="line"></span><br><span class="line">    <span class="title">access_log</span>  /var/log/nginx/demo.access.log;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>根据反向代理服务器发来的<code>Host</code>字段来判断应用这个配置</p>
+<p>3) 重启两台机器的Nginx服务， 即可完成设置.</p>
+<p>设置完成后，尝试在内网访问 <a href="http://demo.wentong.me" target="_blank" rel="external">http://demo.wentong.me</a> , 能够打开内网机器中的页面.</p>
+<p>遗憾的是，学校网络中心似乎对访问此类IP作了限制，只允许特定IP段的用户访问(类似于教务处服务器仅限于校内IP访问)。当我尝试使用校外IP访问 <a href="http://demo.wentong.me" target="_blank" rel="external">http://demo.wentong.me</a> 时，失败了， 甚至一些校内IP也无法访问.  :-(</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>下面这个例子是通过具有公网IP的网关上的反向代理，将域名<code>demo.wenotng.me</code>的请求转发到内网机器<code>192.168.1.100</code>上，这样就可以在公网上通过域名<code>demo.wentong.me</code>访问内网的机器了.</p>
+<p>1) 第一步，添加一条A记录(Adress),  demo.wentong.me 指向网关的公网IP.</p>
+<p>2) 添加Nginx配置:</p>
+<p>网关服务器nginx配置:</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="comment"># /etc/nginx/sites-enable/demo</span></span><br><span class="line"><span class="title">server</span> &#123;</span><br><span class="line">    <span class="title">listen</span>   <span class="number">80</span>;</span><br><span class="line">    <span class="title">server_name</span>  demo.wentong.me;</span><br><span class="line"></span><br><span class="line">    <span class="title">access_log</span>  /var/log/nginx/demo.access.log;</span><br><span class="line"></span><br><span class="line">    <span class="title">location</span> / &#123;</span><br><span class="line">        <span class="title">proxy_redirect</span> <span class="built_in">off</span>;</span><br><span class="line">        <span class="title">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">        <span class="title">proxy_set_header</span> User-Agent <span class="variable">$http_user_agent</span>;</span><br><span class="line">        <span class="title">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="title">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        <span class="title">proxy_pass</span> <span class="url">http://192.168.1.100</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]>
+    
+    </summary>
+    
+      <category term="nginx" scheme="http://blog.wentong.me/tags/nginx/"/>
+    
+      <category term="sumary" scheme="http://blog.wentong.me/categories/sumary/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Nodejs笔记 -- 模块和包]]></title>
+    <link href="http://blog.wentong.me/2015/03/node-module-and-package/"/>
+    <id>http://blog.wentong.me/2015/03/node-module-and-package/</id>
+    <published>2015-03-04T16:00:00.000Z</published>
+    <updated>2016-01-19T11:50:13.000Z</updated>
+    <content type="html"><![CDATA[<h3 id="u57FA_u672C_u6982_u5FF5"><a href="#u57FA_u672C_u6982_u5FF5" class="headerlink" title="基本概念"></a>基本概念</h3><p><strong>包</strong>是实现了某些<strong>功能模块的集合</strong>，它将摸个独立的功能封装起来， 用于发布、更新、依赖管理和版本控制.</p>
+<p>模块和文件是一一对应的， 一个Node.js文件就是一个模块(类似于python的模块)，这个文件可能是<strong>JavaScript代码</strong> (*.js)， <strong>JSON</strong>(*.json)或者<strong>编译过的C/C++扩展</strong>(*.node).</p>
+<h4 id="u521B_u5EFA_u6A21_u5757"><a href="#u521B_u5EFA_u6A21_u5757" class="headerlink" title="创建模块"></a>创建模块</h4><p>创建模块非常简单，因为<strong>一个文件就是一个模块</strong>， 我们需要关注的是如何在其他文件中获取这个模块.</p>
+<p>Node.js 提供了<code>exports</code>和<code>require</code>两个对象，其中<strong>exports是模块公开的接口</strong>， <code>require</code>用于从外部获取一个模块的接口,<strong>即获取外部模块的<code>exports</code>对象</strong></p>
+<a id="more"></a>
+<p>示例:</p>
+<p>1. 覆盖<code>exports</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// hello.js</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Hello</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> name;</span><br><span class="line">    <span class="keyword">this</span>.setName = <span class="function"><span class="keyword">function</span>(<span class="params">newName</span>) </span>&#123;</span><br><span class="line">        name = newName;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">this</span>.sayHello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'Hello'</span> + name);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">module</span>.exports = Hello;  <span class="comment">// 直接将Hello对象赋给exports对象</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// gethello.js</span></span><br><span class="line"><span class="keyword">var</span> Hello = <span class="built_in">require</span>(<span class="string">'./hello'</span>);</span><br><span class="line">hello = <span class="keyword">new</span> Hello();</span><br><span class="line">hello.setName(<span class="string">'Xi'</span>);</span><br><span class="line">hello.sayHello();  <span class="comment">// Xi</span></span><br></pre></td></tr></table></figure>
+<p>2. 为<code>exports</code>增加对象属性</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// hello.js</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Hello</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> name;</span><br><span class="line">    <span class="keyword">this</span>.setName = <span class="function"><span class="keyword">function</span>(<span class="params">newName</span>) </span>&#123;</span><br><span class="line">        name = newName;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">this</span>.sayHello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'Hello'</span> + name);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br><span class="line">exports.Hello = Hello; <span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//gethello.js</span></span><br><span class="line"><span class="keyword">var</span> Hello = <span class="built_in">require</span>(<span class="string">'./hello'</span>).Hello;</span><br><span class="line">hello = <span class="keyword">new</span> Hello()</span><br><span class="line"><span class="comment">//blabla</span></span><br></pre></td></tr></table></figure>
+<h4 id="u521B_u5EFA_u5305"><a href="#u521B_u5EFA_u5305" class="headerlink" title="创建包"></a>创建包</h4><p>Node.js根据CommonJS规范实现了包机制, 开发npm来解决包的发布和获取需求.</p>
+<p>CommonJS规范的包具有以下特征:</p>
+<ul>
+<li><code>package.json</code>必须在包的顶层目录下.</li>
+<li>二进制文件应该在<code>bin</code>目录下.</li>
+<li>JavaScript 代码应该在<code>lib</code>目录下.</li>
+<li>文档应该在<code>doc</code>目录下.</li>
+<li>单元测试应该在<code>test</code>目录下.</li>
+</ul>
+<p>Node.js对包的要求并没有这么严格，只要顶层目录下有package.json，并符合一些规范即可. 不过，为了提高兼容性，在制作包的时候，尽量遵守CommonJS规范.</p>
+<h4 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h4><p><code>package.json</code>是CommonJS规定的用来描述包的文件， 完全符合规范的package.json文件应该包含以下字段:</p>
+<ul>
+<li><strong>name</strong> : 包的名称</li>
+<li><strong>description</strong> : 包的简要说明</li>
+<li><strong>version</strong> : 版本号</li>
+<li><strong>keywords</strong> : 关键字数组，通常用于搜索.</li>
+<li><strong>maintainers</strong> : 维护者数组， 每个元素要包含<em>name</em>, <em>email</em>(可选), <em>web</em>(可选)字段.</li>
+<li><strong>contributors</strong> : 贡献者数组， 格式与<em>maintainers</em>相同</li>
+<li><strong>bugs</strong> : 提交bug的地址</li>
+<li><strong>licenses</strong> : 许可证数组，每个元素要包含type(许可证的名称)和url(连接到许可证文本的地址)字段.</li>
+<li><strong>repositories</strong> : 仓库托管地址数组, 每个元素要包含type(仓库的类型,如git), url(仓库的地址)和path(相对于仓库的路径，可选)字段.</li>
+<li><strong>dependencies</strong> : 包的依赖， 一个关联数组， 由包的名称和版本号组成.</li>
+</ul>
+<h4 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h4><p>npm是Node.js官方提供的包管理工具,已经成为Node.js包标准发布平台.</p>
+<ul>
+<li><code>npm install/i [package_name]</code>  本地模式，将包安装到当前目录</li>
+<li><code>npm install/i [package_name] -g</code> 全局模式.</li>
+</ul>
+<p><strong>注意: </strong> 使用全局模式安装的包并不能直接在JavaScript文件中用<code>require</code>获得， 因为<code>requier</code>不会搜索<code>/usr/local/lib/node_modules/</code></p>
+<h3 id="Node_u7684_u6A21_u5757_u5B9E_u73B0"><a href="#Node_u7684_u6A21_u5757_u5B9E_u73B0" class="headerlink" title="Node的模块实现"></a>Node的模块实现</h3><p>在Node中引入模块，需要经历以下3个过程：</p>
+<ol>
+<li>路径分析</li>
+<li>文件定位</li>
+<li>编译执行</li>
+</ol>
+<p>在Node中，模块氛围两类： 一类是Node自身提供的模块，称为核心模块， 另一类是用户编写的模块， 称为文件模块.</p>
+<p>核心模块在Node源代码编译过程中(指Node安装过程中)，被编译进二进制执行文件中， 在执行时， 部分核心模块就被直接加载进内存中， 所以这部分核心模块引入时， 文件定位和编译执行两个步骤可以省略掉， 并在路径分析中优先判断， 所以加载速度是最快的.</p>
+<p>文件模块是在运行时动态加载的， 需要完整的路径分析、文件定位、编译执行过程.</p>
+<p>Node对引入过的模块都会进行缓存， 以减少二次引入时开销， 它缓存的是编译和执行之后的对象。 不论是核心模块，还是文件模块，require方法对相同模块的二次加载， 都会采用缓存优先的方式，具有最高优先级.  核心模块的缓存检查优先于文件模块的缓存检查.</p>
+<h4 id="u8DEF_u5F84_u5206_u6790"><a href="#u8DEF_u5F84_u5206_u6790" class="headerlink" title="路径分析"></a>路径分析</h4><ol>
+<li>核心模块的优先级仅次于缓存加载， 如果想引入用户自己编写的一个http用户模块， 如果想加载成功，必须换用其他标识符， 或者换用路径的方式(如下)</li>
+<li>路径形式的文件模块：以<code>.</code>,<code>..</code>和<code>/</code>开始的标识符， 都被当做文件模块处理， 由于指定了文件的确切位置， 查找过程中可以节省一些时间.</li>
+<li>自定义模块： 会在模块路径( module.paths )中查找,  查找最为费时. 模块路径的生成规则是<ul>
+<li>当前文件目录下的 node_modules目录</li>
+<li>父目录的node_modules目录</li>
+<li>父目录的父目录的node_modules目录</li>
+<li>… 路径向上逐级递归，直到根目录下的node_modules目录</li>
+</ul>
+</li>
+</ol>
+<h4 id="u6587_u4EF6_u5B9A_u4F4D"><a href="#u6587_u4EF6_u5B9A_u4F4D" class="headerlink" title="文件定位"></a>文件定位</h4><h5 id="u6587_u4EF6_u6269_u5C55_u540D_u5206_u6790"><a href="#u6587_u4EF6_u6269_u5C55_u540D_u5206_u6790" class="headerlink" title="文件扩展名分析"></a>文件扩展名分析</h5><p>CommonJS规范允许标识符中不包含文件扩展名， Node会按照<code>.js</code>, <code>.json</code>, <code>.node</code>的次序补足扩展名， 依次尝试， 这里有个小建议， 如果是<code>.json</code>，<code>.node</code>文件，在传递给require()的标识符中带上扩展名，会加快一点速度.</p>
+<h5 id="u76EE_u5F55_u548C_u5305_u7684_u5904_u7406"><a href="#u76EE_u5F55_u548C_u5305_u7684_u5904_u7406" class="headerlink" title="目录和包的处理"></a>目录和包的处理</h5><p><strong>通过分析文件扩展名后</strong>，可能没有找到对应的文件，但却得到一个目录，此时Node会将目录当成一个包来处理.</p>
+<p>在这个过程中， 首先，Node会在目录下查找<code>package.json</code>， 通过<code>JSON.parse()</code>取出main属性指定的文件名进行定位，如果缺省扩展名，将会进入扩展名分析步骤， 如果main属性指定的文件名错误，或者没有package.json, node会默认将index作为文件名，依次查找<code>index.js</code>,<code>index.json</code>, <code>index.node</code>.</p>
+<p>如果没能成功定位任何文件，会进入下一个路径查找， 如果遍历所有路径也没能定位文件，则抛出异常.</p>
+<p><strong>注意，目录和包处理是在文件扩展名分析失败后进行的</strong></p>
+<h4 id="u6A21_u5757_u7F16_u8BD1"><a href="#u6A21_u5757_u7F16_u8BD1" class="headerlink" title="模块编译"></a>模块编译</h4><p>定位到具体文件之后， Node会新建一个模块对象，然后根据路径载入并编译。 对于不同的文件扩展名， 载入方式有所不同， 具体如下：</p>
+<ul>
+<li><strong>.js 文件</strong> : 通过fs模块同步读取文件后编译执行</li>
+<li><strong>.node文件</strong> : 通过dlopen()方法加载最后编译生成的文件</li>
+<li><strong>.json文件</strong> : 同步读取后，用JSON.parse()解析并返回</li>
+<li>其余扩展名文件都被当做是<code>.js</code>文件载入</li>
+</ul>
+<p>下面仅介绍<strong>JavaScript模块的编译</strong></p>
+<p>根据CommonJS模块规范， 每个模块文件中都存在<code>require</code>、<code>exports</code>、<code>module</code>这3个变量，另外， 在Node的API文档中，我们知道每个模块还有__filename\, __dirname 这两个变量， 它们从何而来？</p>
+<p>实际上， 编译过程中， Node对JavaScript内容进行了头尾包装， 在头部添加(function (exports, require, module, __filename, __dirname) {\n, 尾部添加了\n}); 一个正常的JavaScript文件会被包装成如下的样子:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">exports, require, module, __filename, __dirname</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> math = <span class="built_in">require</span>(<span class="string">'math'</span>);</span><br><span class="line">  exports.area = <span class="function"><span class="keyword">function</span> (<span class="params">radius</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.PI * radius *radius;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>这样每个模块文件之间进行了作用域隔离， 包装之后的代码通过vm原生模块的runInThisContext()方法执行(类似于eval，只是具有明确的上下文，不会污染全局)， 返回一个具体的function对象。 最后， 将当前模块对象的exports属性、require()方法， module(模块对象自身)， 以及在文件定位中得到的完整的文件路径和文件目录作为参数传给这个function()执行。</p>
+<p>执行后， 模块的exports属性被返回调用方， eports属性上的任何方法和属性都能被外部调用， 但是模块中的其余变量或属性不可直接被调用.</p>
+<p>看看下面这行简单的语句，梳理一下模块导入的整个流程</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> area = <span class="built_in">require</span>(<span class="string">'./area'</span>);</span><br></pre></td></tr></table></figure>
+<p>参考资料：</p>
+<ol>
+<li>深入浅出Node.js, 朴灵 著</li>
+<li>Node.js开发指南, BYVoid 著</li>
+</ol>
+]]></content>
+    <summary type="html">
+    <![CDATA[NodeJS中的模块和包机制, 介绍其使用和实现]]>
+    
+    </summary>
+    
+      <category term="Node" scheme="http://blog.wentong.me/tags/Node/"/>
+    
+      <category term="cheatsheet" scheme="http://blog.wentong.me/categories/cheatsheet/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[ECMAScript引用类型简要笔记]]></title>
+    <link href="http://blog.wentong.me/2015/01/ECMAScript-Reference-Types/"/>
+    <id>http://blog.wentong.me/2015/01/ECMAScript-Reference-Types/</id>
+    <published>2015-01-19T16:00:00.000Z</published>
+    <updated>2016-01-19T11:50:47.000Z</updated>
+    <content type="html"><![CDATA[<h3 id="1-_Object"><a href="#1-_Object" class="headerlink" title="1. Object"></a>1. Object</h3><ol>
+<li>可以通过<code>对象字面量</code>的方式定义</li>
+<li>通过方括号或者<code>.</code>号进行访问</li>
+</ol>
+<a id="more"></a>
+<h3 id="2-_Array"><a href="#2-_Array" class="headerlink" title="2. Array"></a>2. Array</h3><ol>
+<li>数组内部数据类型可以不同，大小可以动态调整</li>
+<li>使用方括号表示法或者构造函数创建</li>
+<li><code>length</code>属性记录数组项数， 它不是只读的，可以通过设置该值，从数组末尾添加或者移除项</li>
+<li><code>toString()</code>方法：调用数组每一项的<code>toString()</code>方法， 默认以逗号连接, 构成一个字符串. <code>join()</code>方法，可以使用指定的分隔符来构建这个字符串.</li>
+<li>栈方法: <code>push()</code>&amp;<code>pop()</code> 对数组尾部进行操作</li>
+<li>队列方法: <code>push()</code>&amp;<code>shift()</code> vs <code>pop()</code>&amp;<code>unshift()</code></li>
+<li>排序: <code>sort()</code>&amp;<code>reverse</code>,对源数组进行排序并返回. <code>sort()</code>默认调用每项的<code>toString()</code>方法，将转型后的字符串排序，也可以接受一个函数作为比较方法.  <code>reverse()</code>反转数组</li>
+<li><code>concat()</code>方法，用于连接数组， 该方法不影响被调用者. 返回连接后的数组.</li>
+<li><code>slice()</code>:切片操作，希望接受两个参数，不改变原始数组， 返回切片结果数组</li>
+<li><code>splice()</code>: 铰接  <code>splice(start, num, new1, new2, ...)</code>, 从start位置开始删除num项, 并插入后面的参数new1, new2 …</li>
+<li><code>indexOf()</code>&amp;<code>lastIndexOf()</code>从数组前/后(方向)查找第一个参数的位置， 返回第一个找到的位置，否则返回<code>-1</code>， 可以指定搜索起点，作为第二个参数.</li>
+<li>迭代方法<ul>
+<li><code>every()</code>:  每一项返回ture，则返回true</li>
+<li><code>filter()</code>: 返回true的项组成数组作为返回值</li>
+<li><code>forEach()</code>: 没有返回值</li>
+<li><code>map()</code>: 返回每次调用结果组成的数组</li>
+<li><code>some()</code>: 对任一项返回true, 则返回true</li>
+</ul>
+</li>
+</ol>
+<h3 id="3-_Date"><a href="#3-_Date" class="headerlink" title="3. Date"></a>3. Date</h3><h3 id="4-_RegExp"><a href="#4-_RegExp" class="headerlink" title="4. RegExp"></a>4. RegExp</h3><ol>
+<li>使用字面量或者<code>RegExp()</code>构造函数定义正则表达式， <code>RegExp()</code>接受两个字符串: 模式和标志</li>
+<li>实例属性<ul>
+<li>global : 是否设置了g标志</li>
+<li>ignoreCase ：是否设置了i标志</li>
+<li>lastIndex : 下次搜索的起始位置</li>
+<li>multiline : 是否设置了m标志</li>
+<li>source : 正则表达式的字面量(字符串类型的)</li>
+</ul>
+</li>
+<li>实例方法<ul>
+<li><code>exec()</code> <strong>返回第一个匹配项信息的数组</strong>， 非全局模式下，每次调用后，正则表达式的lastIndex都会重置， 全局模式下会保留.</li>
+<li><code>test()</code> 判断目标字符串与某个模式是否匹配</li>
+<li><code>toString()</code>返回正则表达式字面量(source属性)</li>
+</ul>
+</li>
+</ol>
+<h3 id="5-_Function"><a href="#5-_Function" class="headerlink" title="5. Function"></a>5. Function</h3><p>JavaScript中的函数是对象，可以通过<code>Function()</code>构造函数来生成函数.</p>
+<p><strong>函数是对象，函数名是指针</strong> ,  因此JavaScript中的函数<strong>没有重载</strong>， 一个函数名只能指向一个函数对象， 后面的函数会覆盖前面的.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">num1, num2</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> sum = <span class="function"><span class="keyword">function</span> (<span class="params">num1, num2</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>函数声明和函数表达式是定义函数常用的两种方法， 两者的区别是： <strong>函数声明存在函数声明提升的过程</strong>.</p>
+<p><strong>函数内部属性</strong></p>
+<ul>
+<li><code>arguments</code> 类数组对象，包含着函数中所有参数， 它又一个名为<code>callee</code>的属性，指向拥有着arguments对象的函数.</li>
+<li><code>this</code></li>
+</ul>
+<p><strong>函数属性</strong></p>
+<ul>
+<li><code>length</code> 函数希望接收的命名参数个数</li>
+<li><code>prototype</code> 原型对象， 函数的原型对象不可枚举，不能用<code>for-in</code>发现</li>
+</ul>
+<p><strong>函数方法</strong></p>
+<ul>
+<li><code>apply()</code> 接受两个参数：在其中运行函数的作用域， 参数数组</li>
+<li><code>call()</code> 与apply类似， 只是他的参数是逐个传入，而不是通过数组</li>
+</ul>
+<p><code>apply()</code>和<code>call()</code>能够扩充函数赖以运行的作用域</p>
+<h3 id="6-__u57FA_u672C_u5305_u88C5_u7C7B_u578B"><a href="#6-__u57FA_u672C_u5305_u88C5_u7C7B_u578B" class="headerlink" title="6. 基本包装类型"></a>6. 基本包装类型</h3><p><code>Boolean</code>,<code>Number</code>, <code>String</code>, 与前面介绍的引用类型相似，同时具有各自的基本类型相应的特殊行为。</p>
+<p>每当读取一个基本类型值的时候， 后台会创建一个对应的对象，从而让我们能够调用一些方法来操作数据。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> s1 = <span class="string">"some text"</span>;</span><br><span class="line"><span class="keyword">var</span> s2 = s1.substring(<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<p>读取模式中访问字符串，后台会自动完成以下处理：</p>
+<ul>
+<li>创建String类型的一个实例</li>
+<li>在实例上调用指定的方法</li>
+<li>销毁这个实例</li>
+</ul>
+<p>引用类型与基本包装类型主要区别在于对象的生存期，使用<code>new</code>操作符创建的引用类型的实例，在执行流离开当前作用域之前一直都保存在内存中， 而自动创建的基本类型的对象， 则只存在于一行代码的执行瞬间，然后就被销毁。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> value = <span class="string">"25"</span>;</span><br><span class="line"><span class="keyword">var</span> number = <span class="built_in">Number</span>(value);</span><br><span class="line"><span class="keyword">var</span> num = <span class="number">25</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> num); <span class="comment">// "number"</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> number); <span class="comment">// "number"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Number</span>(value);</span><br><span class="line"><span class="built_in">console</span>.log(obj); <span class="comment">// "object"</span></span><br></pre></td></tr></table></figure>
+<p>转型函数生成的是简单类型， new操作符得到的是对象</p>
+<p><strong>不建议显式地创建基本包装类型的对象</strong></p>
+<p><strong>Boolean 对象</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> falseObject = <span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">false</span>);</span><br><span class="line"><span class="built_in">console</span>.log(falseObject &amp;&amp; <span class="literal">true</span>); <span class="comment">// true</span></span><br><span class="line"><span class="keyword">var</span> bool = <span class="built_in">Boolean</span>(falseObject);  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>注意这里的值为<code>false</code>的Boolean对象，转换为Boolean类型，对应的是<code>true</code>, 建议永远不要使用Boolean对象</p>
+<p><strong>Number 对象</strong></p>
+<p><strong>String 对象</strong></p>
+<p>参考资料:</p>
+<ul>
+<li>JavaScript 高级程序设计</li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[针对ECMAScript引用类型Object, Array, Date, RegExp, 以及基本包装类型的简要笔记]]>
+    
+    </summary>
+    
+      <category term="ECMAScript" scheme="http://blog.wentong.me/tags/ECMAScript/"/>
+    
+      <category term="cheatsheet" scheme="http://blog.wentong.me/categories/cheatsheet/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[ECMAScript 数据类型]]></title>
+    <link href="http://blog.wentong.me/2015/01/ECMAScript-Data-Type/"/>
+    <id>http://blog.wentong.me/2015/01/ECMAScript-Data-Type/</id>
+    <published>2015-01-17T16:00:00.000Z</published>
+    <updated>2016-01-19T11:50:58.000Z</updated>
+    <content type="html"><![CDATA[<h3 id="u6570_u636E_u7C7B_u578B"><a href="#u6570_u636E_u7C7B_u578B" class="headerlink" title="数据类型"></a>数据类型</h3><p>ECMAScript 中有5种简单数据类型(也称基本数据类型): <code>Undefined</code>、<code>Null</code>、<code>Boolean</code>、<code>Number</code>和<code>String</code>， 还有一种复杂数据类型——<code>Object</code>， Object本质上是由一组无序的<code>键值对</code>组成的。 ECMAScript 不支持任何类型创建自定义类型的机制，而所有值都将是上述6种数据类型之一。 </p>
+<h4 id="typeof__u64CD_u4F5C_u7B26"><a href="#typeof__u64CD_u4F5C_u7B26" class="headerlink" title="typeof 操作符"></a>typeof 操作符</h4><p><code>typeof</code>操作符用于检测给定变量的数据类型， 该操作符可能返回下列某个字符串：</p>
+<ul>
+<li><code>&quot;undefined&quot;</code>  —— 如果这个值未定义；</li>
+<li><code>&quot;boolean&quot;</code> —— 如果这个值是布尔值；</li>
+<li><code>&quot;string&quot;</code> —— 如果这个值是字符串</li>
+<li><code>&quot;number&quot;</code> —— 如果这个值是数值</li>
+<li><code>&quot;object&quot;</code> —— 如果这个值是对象或<code>null</code></li>
+<li><code>&quot;function&quot;</code> —— 如果这个值是函数</li>
+</ul>
+<a id="more"></a>
+<h4 id="Undefined__u7C7B_u578B"><a href="#Undefined__u7C7B_u578B" class="headerlink" title="Undefined 类型"></a>Undefined 类型</h4><p>Undefined 类型只有一个值，即特殊的undefined， 在使用var生命变量但未对其加以初始化时，这个变量的值就是undefined。</p>
+<p>ECMA-262第 3 版之前的版本中并没有规定<code>undefined</code>这个值， 第3版引入这个值是为了正式区分空对象指针与未经初始化的变量.</p>
+<h4 id="Null__u7C7B_u578B"><a href="#Null__u7C7B_u578B" class="headerlink" title="Null 类型"></a>Null 类型</h4><p>Null类型也是一个只有一个值的数据类型， 这个特殊的值是null， 从逻辑角度看， null值表示一个空对象指针，而这正是使用typeof操作符检测null值时会返回”object”的原因.</p>
+<p>实际上，undefined 是派生自null值的， 因此<code>ECMA-262</code>规定对它们的相等性测试要返回<code>true</code>.</p>
+<p>只要意在保存对象的变量还没有真正地保存对象， 就应该明确地让该变量保存null 值， 这样，只要检查null值就可以知道相应的变量是否已经保存了一个对象的引用.</p>
+<h4 id="Boolean__u7C7B_u578B"><a href="#Boolean__u7C7B_u578B" class="headerlink" title="Boolean 类型"></a>Boolean 类型</h4><p>Boolean类型是ECMAScript中使用最多的一种类型， 该类型只有两个字面值: <code>true</code>和<code>false</code>， 这两个值与数字不是一回事， true不一定等于1， false也不一定等于0。</p>
+<p>需要注意的是， 虽然Boolean类型的字面值只有true和false两个， 但ECMAScript中所有类型的值都与这两个Boolean值等价的值。 要将一个值转换为其对应的Boolean值，可以调用转型函数<code>Boolean()</code>，如下:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> message = <span class="string">"hello"</span>;</span><br><span class="line"><span class="keyword">var</span> messageAsBoolean = <span class="built_in">Boolean</span>(message); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>其他类型与Boolean类型的转换规则:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">数据类型</th>
+<th style="text-align:center">转换为<code>true</code>的值</th>
+<th style="text-align:center">转换为<code>false</code>的值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Boolean</td>
+<td style="text-align:center">true</td>
+<td style="text-align:center">false</td>
+</tr>
+<tr>
+<td style="text-align:center">String</td>
+<td style="text-align:center">任何非空字符串</td>
+<td style="text-align:center">“”(空字符串)</td>
+</tr>
+<tr>
+<td style="text-align:center">Number</td>
+<td style="text-align:center">任何非零数值(包括无穷大)</td>
+<td style="text-align:center">0和NaN</td>
+</tr>
+<tr>
+<td style="text-align:center">Object</td>
+<td style="text-align:center">任何对象</td>
+<td style="text-align:center">null</td>
+</tr>
+<tr>
+<td style="text-align:center">Undefined</td>
+<td style="text-align:center">N/A(不适用)</td>
+<td style="text-align:center">undefined</td>
+</tr>
+</tbody>
+</table>
+<h4 id="Number__u7C7B_u578B"><a href="#Number__u7C7B_u578B" class="headerlink" title="Number 类型"></a>Number 类型</h4><ul>
+<li>整数值</li>
+<li>浮点数</li>
+</ul>
+<h5 id="u6570_u503C_u8303_u56F4"><a href="#u6570_u503C_u8303_u56F4" class="headerlink" title="数值范围"></a>数值范围</h5><p>ECMAScript 并不能保存世界上所有的数值， ECMAScript能够表示的最小数值保存在<code>Number.MIN_VALUE</code>中——在大多数浏览器中， 这个值是5e-324； 能够表示的最大数值保存在<code>Number.MAX_VALUE</code>中——在大多数浏览器中，这个值是1.7976931348623157e+308。 如果某次计算的结果得到了一个超出JavaScript数值范围的值，那么这个数值将会被自动转换成特殊的<code>Infinity</code>值， 具体来说， 如果这个数值是负数，会被转换成<code>-Infinity</code>(负无穷), 如果这个数值是正数，则会被转换为<code>Infinity</code>(正无穷)</p>
+<p>如果某次计算返回了正无穷或负无穷， 那么这个值将无法参与下一次的计算， 因为<code>Infinity</code>不是能够参与计算的数值。 判断一个数值是否是有穷的，可以使用<code>isFinite()</code>函数，这个函数在参数位于最小与最大值之间时会返回<code>true</code>.</p>
+<h5 id="NaN"><a href="#NaN" class="headerlink" title="NaN"></a>NaN</h5><p><strong>NaN</strong> (<em>Not a Number</em>),  即非数值是一个特殊的数值， 这个数值用于表示一个本来要返回数值的操作未返回数值的情况。 </p>
+<p>NaN 本身有两个非同寻常的特点</p>
+<ol>
+<li>任何涉及NaN的操作(例如NaN/10)都会返回NaN</li>
+<li><strong>NaN与任何值都不相等，包括NaN本身</strong></li>
+</ol>
+<p>针对NaN的这两个特点，ECMAScript定义了<code>isNaN()</code>函数，这个函数接受一个参数， 该参数可以是任何类型， 而函数会帮助我们确定这个参数是否”不是数值”。 <code>isNaN()</code>在接收到一个值之后，会尝试将这个值转换为数值， 某些不是数值的值会直接转换为数值，例如字符串”10”或Boolean值， 而任何不能被转换为数值的值都会导致这个函数返回<code>true</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">isNaN</span>(<span class="literal">NaN</span>); <span class="comment">//true</span></span><br><span class="line"><span class="built_in">isNaN</span>(<span class="number">10</span>);  <span class="comment">//true</span></span><br><span class="line"><span class="built_in">isNaN</span>(<span class="string">"10"</span>); <span class="comment">//true (可以被转换为数值10)</span></span><br><span class="line"><span class="built_in">isNaN</span>(<span class="literal">true</span>); <span class="comment">//true (可以被转换为数值1)</span></span><br><span class="line"><span class="built_in">isNaN</span>(<span class="string">"bule"</span>); <span class="comment">//false (不能被转换为数值)</span></span><br></pre></td></tr></table></figure>
+<h5 id="u6570_u503C_u8F6C_u6362"><a href="#u6570_u503C_u8F6C_u6362" class="headerlink" title="数值转换"></a>数值转换</h5><p>有三个函数可以把非数值转换为数值: <code>Number()</code>、<code>parseInt()</code>、<code>parseFloat()</code>。 <code>Number()</code>可以用于任何数据类型， 后两个函数专门用于<strong>把字符串转换为数值</strong>.</p>
+<p>Number()函数转换规则:</p>
+<ul>
+<li>如果是Boolean值， true和false分别被转换为1和0</li>
+<li>如果是数字值， 只是简单的传入和返回</li>
+<li>如果是null值， 返回0</li>
+<li>如果是undefined， 返回NaN</li>
+<li>如果是字符串，遵循以下规则<ul>
+<li>有效的数字形式会被转换为10进制，前导0会被忽略,也就是说，八进制会被当做十进制， “011”会变成11</li>
+<li>空字符串将被转换为0</li>
+<li>除此之外，其他字符串将会转换为NaN</li>
+</ul>
+</li>
+<li>如果是对象， 会调用对象的<code>valueOf()</code> 方法, 然后依照前面的规则转换返回的值。 如果转换的结果是NaN, 则调用对象的 <code>toString()</code>方法， 然后再次依照前面的规则转换返回的字符串值.</li>
+</ul>
+<p><code>parseInt()</code> 会忽略字符串前面的空格， 知道找到第一个非空格字符， 付过第一个字符不是数字字符或者负号， <code>parseInt()</code>就会返回NaN; 也就是说， parseInt()转换空字符串会返回NaN， 如果第一个字符是数字字符，parseInt()会继续解析第二个字符，直到解析完所有后序字符或者<strong>遇到一个非数字字符</strong>.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">parseInt</span>(<span class="string">"1234blue"</span>); <span class="comment">// 1234</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">""</span>);  <span class="comment">// NaN</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">"0xA"</span>); <span class="comment">// 10</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">"22.5"</span>); <span class="comment">// 22</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">"070"</span>); <span class="comment">// 56(ECMAScript 3)、 0(ECMAScript 5)</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">"70"</span>, <span class="number">8</span>); <span class="comment">// 56</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">"70"</span>);  <span class="comment">//70</span></span><br></pre></td></tr></table></figure>
+<p><code>parseInt()</code>可以指定第二个参数n,  函数会按照n进制解析字符串.</p>
+<h4 id="String__u7C7B_u578B"><a href="#String__u7C7B_u578B" class="headerlink" title="String 类型"></a>String 类型</h4><p>String 类型用于表示由零或多个16位Unicode字符组成的字符序列，即字符串。 字符串可以由单引号或者双引号表示， 在ECMAScript中，这两种表示方式并没有区别.</p>
+<h5 id="u7279_u70B9"><a href="#u7279_u70B9" class="headerlink" title="特点"></a>特点</h5><p>ECMAScript中的字符串是不可变的， 也就是说，字符串一旦创建，它们的值就不能改变， 要改变保存的字符串， 首先要销毁原来的字符串， 然后再用另一个包含新值的字符串填充该变量</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> lang  = <span class="string">"Java"</span>;</span><br><span class="line">lang = lang + <span class="string">"Script"</span>;</span><br></pre></td></tr></table></figure>
+<p>对于第二行代码，实现过程为： 首先创建一个能容纳10个字符的新字符串， 然后在这个字符串中填充”Java”和”Script”，最后一步是销毁原来的字符串”Java”和字符串”Script”, 因为这两个字符串已经没有用了。这一过程在后台发生，而这也是在某些旧版本浏览器中，拼接字符串时速度很慢的原因所在.</p>
+<h5 id="u8F6C_u6362_u4E3A_u5B57_u7B26_u4E32"><a href="#u8F6C_u6362_u4E3A_u5B57_u7B26_u4E32" class="headerlink" title="转换为字符串"></a>转换为字符串</h5><p>要把一个值转换为一个字符串有两种方式：第一种是使用几乎每个值都会有的<code>toString()</code>方法， </p>
+<p>数值、布尔值、对象和字符串值都有<code>toString()</code>方法，多数情况下，该方法不需要传递参数， 但是，在调用数值的<code>toString()</code>方法时，可以传递一个参数: 输出数值的基数.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">10</span>;</span><br><span class="line">num.toString();  <span class="comment">// "10"</span></span><br><span class="line">num.toString(<span class="number">2</span>); <span class="comment">// "1010"</span></span><br><span class="line">num.toString(<span class="number">8</span>); <span class="comment">// "12"</span></span><br><span class="line">num.toString(<span class="number">10</span>); <span class="comment">// "10"</span></span><br><span class="line">num.toString(<span class="number">16</span>); <span class="comment">// "a"</span></span><br></pre></td></tr></table></figure>
+<p>在不知道要转换的值是不是<code>null</code>或<code>undefined</code>的情况下， 还可以使用函数<code>String()</code>, 这个函数能够将任何类型的值转换为字符串.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> value1 = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">var</span> value2 = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">var</span> value3 = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">var</span> value4;</span><br><span class="line"></span><br><span class="line"><span class="built_in">String</span>(value1);  <span class="comment">// "10"</span></span><br><span class="line"><span class="built_in">String</span>(value2);  <span class="comment">// "true"</span></span><br><span class="line"><span class="built_in">String</span>(value3);  <span class="comment">// "null"</span></span><br><span class="line"><span class="built_in">String</span>(value4);  <span class="comment">// "undefined"</span></span><br></pre></td></tr></table></figure>
+<h4 id="Object__u7C7B_u578B"><a href="#Object__u7C7B_u578B" class="headerlink" title="Object 类型"></a>Object 类型</h4><p>ECMAScript中的对象其实就是一组数据和功能的集合。 对象可以通过执行 <code>new</code>操作符后跟要创建的对象类型的名称来创建。 而创建<code>Object</code>类型的实力并为其添加属性或方法，就可以创建自定义对象.</p>
+<p>在ECMAScript中， 如果不给构造函数传递参数，则可以省略后面的那一对圆括号.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>;  <span class="comment">// 两者是等价的， 但不推荐后者</span></span><br></pre></td></tr></table></figure>
+<p>Object的每个实例都具有下列属性和方法:</p>
+<ul>
+<li><code>Constructor</code> :  保存着用于创建当前对象的函数， 对于前面的例子而言，构造函数就是Object();</li>
+<li><code>hasOwnProperty(propertyName)</code> : 检查给定的属性是否在当前实例对象中</li>
+<li><code>isPrototypeOf(object)</code> :  用于检查传入的对象是否是另一对象的原型</li>
+<li><code>propertyIsEnumerable(propertyName)</code> : 用于检查给定的属性是否能够使用<code>for-in</code>语句来枚举</li>
+<li><code>toLocaleString()</code> : 返回对象的字符串表示，该字符串与执行环境的地区对应</li>
+<li><code>toString()</code> : 返回对象的字符串表示</li>
+<li><code>valueOf()</code> : 返回对象的字符串、数值或者布尔值表示。</li>
+</ul>
+<p>参考资料:</p>
+<ul>
+<li>JavaScript 高级程序设计</li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[ECMAScript 基本数据类型介绍]]>
+    
+    </summary>
+    
+      <category term="ECMAScript" scheme="http://blog.wentong.me/tags/ECMAScript/"/>
+    
+      <category term="cheatsheet" scheme="http://blog.wentong.me/categories/cheatsheet/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Markdown 使用教程]]></title>
+    <link href="http://blog.wentong.me/2014/06/markdown-cheatsheet/"/>
+    <id>http://blog.wentong.me/2014/06/markdown-cheatsheet/</id>
+    <published>2014-06-02T16:00:00.000Z</published>
+    <updated>2016-01-19T11:50:38.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="Markdown_u7B80_u4ECB"><a href="#Markdown_u7B80_u4ECB" class="headerlink" title="Markdown简介"></a>Markdown简介</h2><p>wiki释义:</p>
+<blockquote>
+<p><code>Markdown</code> 是一种轻量级<code>标记语言</code>，创始人为约翰·格鲁伯（John Gruber）和亚伦·斯沃茨（Aaron Swartz）。<br>它允许人们“使用易读易写的纯文本格式编写文档，然后<strong>转换成有效的XHTML(或者HTML)文档</strong>”。<br>这种语言吸收了很多在电子邮件中已有的纯文本标记的特性。</p>
+</blockquote>
+<p>Markdown的优点包括但不限于以下几点:</p>
+<a id="more"></a>
+<ul>
+<li>纯文本，所以兼容性极强，可以用所有文本编辑器打开。</li>
+<li>让你专注于文字而不是排版。</li>
+<li>格式转换方便，Markdown 的文本你可以轻松转换为 html、电子书等。</li>
+<li>Markdown 的标记语法有极好的可读性。</li>
+</ul>
+<h2 id="Markdown_u8BED_u6CD5"><a href="#Markdown_u8BED_u6CD5" class="headerlink" title="Markdown语法"></a>Markdown语法</h2><p>Markdown语法简洁明了、容易学习，下面一一介绍。</p>
+<h3 id="u57FA_u672C_u7B26_u53F7"><a href="#u57FA_u672C_u7B26_u53F7" class="headerlink" title="基本符号"></a>基本符号</h3><ul>
+<li><code>*</code>, <code>-</code> , <code>+</code>： 这3个符号的效果都一样， 被称为Markdown符号</li>
+<li><code>空白行</code> : 表示另起一个段落,对应HTML中的 <code>&lt;p&gt;</code> 元素</li>
+<li><code>` </code>  表示 <code>内联代码</code>， <code>tab</code>是用来标记<code>代码段</code>，分别对应HTML的 <code>&lt;code&gt;</code> ， <code>&lt;pre&gt;</code> 元素</li>
+</ul>
+<h3 id="u6BB5_u843D_u6362_u884C"><a href="#u6BB5_u843D_u6362_u884C" class="headerlink" title="段落换行"></a>段落换行</h3><ul>
+<li><code>单个回车</code>会被解释为<code>空格</code></li>
+<li>一个空白行(即<code>两个回车</code>)变成单一段落<code>&lt;p&gt;</code></li>
+<li>连续3个Markdown符号，然后回车，表示<code>&lt;hr&gt;</code>横线</li>
+<li><strong>连续多个空格会被解释为单个空格</strong></li>
+</ul>
+<h3 id="u6807_u9898"><a href="#u6807_u9898" class="headerlink" title="标题"></a>标题</h3><ul>
+<li>在文字前面加上1-6个<code>#</code>来实现, 代表HTML中的六级标题 <code>h1</code>-<code>h6</code></li>
+<li><p>在文字左右各加1-3各符号，可本别实现斜体<code>&lt;i&gt;</code>、加粗<code>&lt;b&gt;</code>和斜体加粗</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># &#19968;&#32423;&#26631;&#39064;&#10;## &#20108;&#32423;&#26631;&#39064;&#10;### &#19977;&#32423;&#26631;&#39064;&#10;#### &#22235;&#32423;&#26631;&#39064;&#10;##### &#20116;&#32423;&#26631;&#39064;&#10;###### &#20845;&#32423;&#26631;&#39064;&#10;&#10;*&#26012;&#20307;*&#10;&#10;**&#21152;&#31895;**&#10;&#10;***&#21152;&#31895;&#26012;&#20307;***</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="u5F15_u7528"><a href="#u5F15_u7528" class="headerlink" title="引用"></a>引用</h3><ul>
+<li>在第一行加上 <code>&gt;</code> 和一个<code>空格</code>，表示引用，还可以嵌套, 对应HTML中的<code>&lt;blockquote&gt;</code>标签</li>
+</ul>
+<h3 id="u5217_u8868"><a href="#u5217_u8868" class="headerlink" title="列表"></a>列表</h3><ul>
+<li>使用*,+,-加上一个空格来表示,对应HTML中的<code>&lt;ul&gt;</code>标签</li>
+<li>可以支持嵌套</li>
+<li>有序列表用 <code>数字</code>+<code>.</code>+<code>空格</code> 来表示,对应HTML中的<code>&lt;ol&gt;</code>标签</li>
+<li><p>如果列表内容很长，不需要手工输入换行符，css控制段落的宽度，会自动的缩放的</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">**&#26080;&#24207;&#21015;&#34920;:**&#10;&#10;- &#26080;&#24207;&#21015;&#34920; 1&#10;- &#26080;&#24207;&#21015;&#34920; 2&#10;- &#26080;&#24207;&#21015;&#34920; 3&#10;&#10;**&#26377;&#24207;&#21015;&#34920;:**&#10;&#10;1. &#26377;&#24207;&#21015;&#34920; 1&#10;2. &#26377;&#24207;&#21015;&#34920; 2&#10;3. &#26377;&#24207;&#21015;&#34920; 3&#10;&#10;**&#21015;&#34920;&#23884;&#22871;:**&#10;&#10;- One&#10;    + What&#10;    + Why&#10;    + How&#10;- Two&#10;- Three</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>效果如下</strong></p>
+<p><strong>无序列表:</strong></p>
+<ul>
+<li>无序列表 1</li>
+<li>无序列表 2</li>
+<li>无序列表 3</li>
+</ul>
+<p><strong>有序列表:</strong></p>
+<ol>
+<li>有序列表 1</li>
+<li>有序列表 2</li>
+<li>有序列表 3</li>
+</ol>
+<p><strong>列表嵌套:</strong></p>
+<ul>
+<li>One<ul>
+<li>What</li>
+<li>Why</li>
+<li>How</li>
+</ul>
+</li>
+<li>Two</li>
+<li>Three</li>
+</ul>
+<h3 id="u94FE_u63A5"><a href="#u94FE_u63A5" class="headerlink" title="链接"></a>链接</h3><p>在 Markdown 中，插入链接只需要使用 <code>[显示文本](连接地址)</code>这种格式，<br>插入图片只需要使用<code>![图片描述](图片链接地址)</code>这种格式即可,其中前者对应于<br>HTML中的<code>a</code>标签，后者对应<code>img</code>标签，方括号中的图片描述为img标签的的<code>alt</code>属性值</p>
+<p>还有一种建立链接的方式，称为<code>参考式</code>, 参考式的链接是在链接文字的括号后面再接上另一个方括号， 而在第二个方括号里面要填入用以辨识链接的标记: <code>[显示文本][id]</code>或<code>![图片描述][id]</code>. 接着，在文件的任意处，你可以把这个标记的链接内容定义出来：<code>[id]: http://example.com/</code></p>
+<p>示例:</p>
+<pre><code>个人信息:
+
+[Wentong](http://www.fangwentong.com/)
+
+- [GitHub][1]
+- [Facebook][]
+- [Twitter][Weblog]
+
+[1]: https://github.com/fangwentong/
+[Facebook]: https://facebook.com/fangwentong/
+[Weblog]: https://twitter.com/fangwentong/
+</code></pre><p><strong>效果如下:</strong></p>
+<p>个人信息:</p>
+<p><a href="http://www.fangwentong.com/" target="_blank" rel="external">Wentong</a></p>
+<ul>
+<li><a href="https://github.com/fangwentong/" target="_blank" rel="external">GitHub</a></li>
+<li><a href="https://facebook.com/fangwentong/" target="_blank" rel="external">Facebook</a></li>
+<li><a href="https://twitter.com/fangwentong/" target="_blank" rel="external">Twitter</a></li>
+</ul>
+<h3 id="u8868_u683C"><a href="#u8868_u683C" class="headerlink" title="表格"></a>表格</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">| Tables        | Are           | Cool  |&#10;| ------------- |:-------------:| -----:|&#10;| col 3 is      | right-aligned | $1600 |&#10;| col 2 is      | centered      |   $12 |&#10;| zebra stripes | are neat      |    $1 |</span><br></pre></td></tr></table></figure>
+<h3 id="u7279_u6B8A_u7B26_u53F7"><a href="#u7279_u6B8A_u7B26_u53F7" class="headerlink" title="特殊符号"></a>特殊符号</h3><ul>
+<li>用<code>\</code> 来转义，表示文本中的markdown符号</li>
+</ul>
+<h3 id="u517C_u5BB9HTML_u8BED_u6CD5"><a href="#u517C_u5BB9HTML_u8BED_u6CD5" class="headerlink" title="兼容HTML语法"></a>兼容HTML语法</h3><p>我们知道，Markdown最终要通过Markdown解释器转换为HTML文档, 而Markdown是一种书写的格式，它的语法种类很少，只对应HTML标记中的一小部分, 不在Markdown涵盖范围内的标签， 可以直接在文档中用HTML书写.</p>
+<h3 id="u81EA_u5B9A_u4E49Markdown_u6837_u5F0F"><a href="#u81EA_u5B9A_u4E49Markdown_u6837_u5F0F" class="headerlink" title="自定义Markdown样式"></a>自定义Markdown样式</h3><p>注意到，Markdown解释器将Markdown文本转换为HTML文档，我们编写CSS，并在生成的HTML文档中引用这个样式表, 可以达到自定义Markdown显示风格的效果.</p>
+<h3 id="u51E0_u4E2A_u597D_u7528_u7684Markdown_u5DE5_u5177"><a href="#u51E0_u4E2A_u597D_u7528_u7684Markdown_u5DE5_u5177" class="headerlink" title="几个好用的Markdown工具"></a>几个好用的Markdown工具</h3><ul>
+<li>Chrome扩展 – <a href="https://chrome.google.com/webstore/detail/marxico/kidnkfckhbdkfgbicccmdggmpgogehop?utm_source=chrome-ntp-icon" target="_blank" rel="external">马克飞象</a></li>
+<li>Chrome插件 – <a href="https://chrome.google.com/webstore/detail/markdown-here/elifhakcjgalahccnjkneoccemfahfoa?utm_source=chrome-ntp-icon" target="_blank" rel="external">Markdown-here</a> 用Markdown写一封漂亮的电子邮件.</li>
+<li>Mac平台, 推荐使用<a href="http://mouapp.com/" target="_blank" rel="external">Mou</a></li>
+<li>Chrome插件 – <a href="https://chrome.google.com/webstore/detail/febilkbfcbhebfnokafefeacimjdckgl" target="_blank" rel="external">Markdown Preview Plus</a>, 实时预览网络或者本地Markdown文档.</li>
+</ul>
+<p>参考文章：</p>
+<ol>
+<li><a href="http://wowubuntu.com/markdown/" target="_blank" rel="external">官方文档(中文版)：Markdown 语法说明</a></li>
+<li><a href="http://lutaf.com/markdown-simple-usage.htm" target="_blank" rel="external">鲁塔弗：markdown 简明语法</a></li>
+<li><a href="http://jianshu.io/p/q81RER" target="_blank" rel="external">简书：献给写作者的 Markdown 新手指南</a></li>
+</ol>
+]]></content>
+    <summary type="html">
+    <![CDATA[markdown 语法简介]]>
+    
+    </summary>
+    
+      <category term="cheatsheet" scheme="http://blog.wentong.me/tags/cheatsheet/"/>
+    
+      <category term="cheatsheet" scheme="http://blog.wentong.me/categories/cheatsheet/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[使用Terminator增强你的终端]]></title>
+    <link href="http://blog.wentong.me/2014/05/work-with-terminator/"/>
+    <id>http://blog.wentong.me/2014/05/work-with-terminator/</id>
+    <published>2014-05-29T16:00:00.000Z</published>
+    <updated>2016-01-19T11:50:03.000Z</updated>
+    <content type="html"><![CDATA[<p>##简介</p>
+<p>在<code>linux</code>下编程怎能缺少一个功能强大的终端，这里向大家介绍一款广受好评的终端——<code>Terminator</code>(终结者).</p>
+<p>Terminator 是CrunchBang的默认终端，该终端基于 GNOME terminal。Terminator最大的特点就是可以在一个窗口中打开多个终端,<br>可以自由的将一个终端区域横向或纵向分割建立新终端，通过鼠标拉伸调整每个终端的大小，对需要同时使用多个终端的用户非常方便。</p>
+<a id="more"></a>
+<hr>
+<p>##安装</p>
+<p>###Ubuntu</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get install terminator</span><br></pre></td></tr></table></figure>
+<p>###Fedora</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo yum install terminator</span><br></pre></td></tr></table></figure>
+<hr>
+<p>##常用快捷键</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Ctrl+Shift+E    &#22402;&#30452;&#20998;&#21106;&#31383;&#21475;&#10;Ctrl+Shift+O    &#27700;&#24179;&#20998;&#21106;&#31383;&#21475;&#10;    F11         &#20840;&#23631;&#10;Ctrl+Shift+C    &#22797;&#21046;&#10;Ctrl+Shift+V    &#31896;&#36148;&#10;Ctrl+Shift+N    &#25110;&#32773; Ctrl+Tab &#22312;&#20998;&#21106;&#30340;&#21508;&#31383;&#21475;&#20043;&#38388;&#20999;&#25442;&#10;Ctrl+Shift+X    &#23558;&#20998;&#21106;&#30340;&#26576;&#19968;&#20010;&#31383;&#21475;&#25918;&#22823;&#33267;&#20840;&#23631;&#20351;&#29992;&#10;Ctrl+Shift+Z    &#20174;&#25918;&#22823;&#33267;&#20840;&#23631;&#30340;&#26576;&#19968;&#31383;&#21475;&#22238;&#21040;&#22810;&#31383;&#26684;&#30028;&#38754;</span><br></pre></td></tr></table></figure>
+<p>快捷键可以自己更改</p>
+<p>##优化配置</p>
+<p>安装完成后，从应用程序菜单中找到Terminator并启动，尝试使用上文介绍的快捷键切出几个窗口, 效果如下：</p>
+<p><img src="/2014/05/terminator01.jpg" alt="调整前的终端" class="img-rounded"></p>
+<p>注意到界面不是太美观， 字体出现重叠现象，影响工作， 这里推荐使用苹果的<code>Monaco</code>等宽字体<br>作为终端默认字体,  中文字体推荐使用<code>文泉驿微米黑</code>, 可避免中文显示出现锯齿.</p>
+<p>Ubuntu下安装字体可以参考 <a href="/2014/05/add-fonts-to-your-linux/" target="_blank">这篇文章</a>,<br>Terminator 的其他配置，如背景透明、字体颜色等， 可以右击终端区域,在<code>Preferences</code>中进行设置，这里不一一介绍了.</p>
+<p>我的Terminator配置文件在 <strong><a href="https://github.com/fangwentong/dotfiles/blob/master/ubuntu-gui/terminator/config" target="_blank" rel="external">这里</a></strong> 可以找到,<br>更多配置及说明请参考 <a href="https://github.com/fangwentong/dotfiles" target="_blank" rel="external">说明文档</a>.</p>
+<p>最后贴上配置后的效果</p>
+<p><img src="/uploads/image/2014/05/terminator02.jpeg" alt="调整后的终端" class="img-rounded"></p>
+<p>是不是好多了了呢？ Have Fun!</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[介绍一款Linux下强大好用的终端——Terminator(终结者)]]>
+    
+    </summary>
+    
+      <category term="tools" scheme="http://blog.wentong.me/tags/tools/"/>
+    
+      <category term="cheatsheet" scheme="http://blog.wentong.me/categories/cheatsheet/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[在linux中安装/卸载字体]]></title>
+    <link href="http://blog.wentong.me/2014/05/add-fonts-to-your-linux/"/>
+    <id>http://blog.wentong.me/2014/05/add-fonts-to-your-linux/</id>
+    <published>2014-05-29T16:00:00.000Z</published>
+    <updated>2016-01-19T11:06:19.000Z</updated>
+    <content type="html"><![CDATA[<p><strong>问题由来</strong></p>
+<p>在<a href="/2014/05/work-with-terminator/" target="_blank">安装Terminator</a><br>后，终端字体不够美观，于是就琢磨着安装新的字体来替代默认选项，下面以安装苹果的<code>Monaco</code>等宽字体为例，<br>来介绍在linux中安装字体的方法。</p>
+<a id="more"></a>
+<h2 id="u5B89_u88C5"><a href="#u5B89_u88C5" class="headerlink" title="安装"></a>安装</h2><p>安装字体可以使用图形化的字体查看器，也可以通过命令在命令行中安装。</p>
+<hr>
+<h3 id="u4E00-_Ubuntu_u4E2D_u5229_u7528_u5B57_u4F53_u67E5_u770B_u5668_u5B89_u88C5"><a href="#u4E00-_Ubuntu_u4E2D_u5229_u7528_u5B57_u4F53_u67E5_u770B_u5668_u5B89_u88C5" class="headerlink" title="一. Ubuntu中利用字体查看器安装"></a>一. Ubuntu中利用字体查看器安装</h3><p>首先到<a href="https://github.com/fangwentong/dotfiles/raw/master/ubuntu-gui/fonts/Monaco.ttf" target="_blank" rel="external">这里</a>下载<code>Monaco</code>字体, 然后在<code>Ubuntu</code>系统中，双击下载得到的Monaco.ttf文件，即用系统自带的字体查看器打开了该文件，点击面板上的<code>安装</code>按钮，即可完成安装,这种方法安装后，字体文件存放在<code>~/.local/share/fonts</code>目录下。</p>
+<p>这种方法的优点是安装前能预览字体效果，安装过程简单便捷，动几下鼠标就完成了安装，非常适合在图形界面下安装; 缺点是安装借助图形化工具，无法通过自动化脚本安装。</p>
+<h3 id="u4E8C-__u901A_u8FC7_u547D_u4EE4_u5B89_u88C5_u5B57_u4F53"><a href="#u4E8C-__u901A_u8FC7_u547D_u4EE4_u5B89_u88C5_u5B57_u4F53" class="headerlink" title="二. 通过命令安装字体"></a>二. 通过命令安装字体</h3><p><code>linux</code>系统的字体文件放在<code>/usr/share/fonts/</code>目录以及用户的<code>~/.fonts</code>和<code>~/.local/share/fonts</code>目录下，第一个位置为系统所用用户共享，将字体安装到这个目录需要管理员权限；后面两个位置则为当前登陆用户所有,安装字体到这个目录不需要管理员权限。</p>
+<ol>
+<li>安装到 /usr/share/fonts/ (需要管理员权限)</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wget https://github.com/fangwentong/dotfiles/raw/master/ubuntu-gui/fonts/Monaco.ttf</span><br><span class="line">sudo mkdir -p /usr/share/fonts/custom</span><br><span class="line">sudo mv Monaco.ttf /usr/share/fonts/custom</span><br><span class="line">sudo chmod <span class="number">744</span> /usr/share/fonts/custom/Monaco.ttf</span><br><span class="line"></span><br><span class="line">sudo mkfontscale  <span class="comment">#生成核心字体信息</span></span><br><span class="line">sudo mkfontdir</span><br><span class="line">sudo <span class="built_in">fc</span>-cache -fv</span><br></pre></td></tr></table></figure>
+<ol>
+<li>安装到 ~/.fonts/ (安装到 ~/.local/share/fonts 原理相同)</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wget https://github.com/fangwentong/dotfiles/blob/ubuntu/fonts/Monaco.ttf?raw=<span class="literal">true</span></span><br><span class="line">mkdir -p ~/.fonts</span><br><span class="line">mv Monaco.ttf ~/.fonts</span><br><span class="line"><span class="built_in">fc</span>-cache -vf  <span class="comment">#刷新系统字体缓存</span></span><br></pre></td></tr></table></figure>
+<h3 id="u5378_u8F7D"><a href="#u5378_u8F7D" class="headerlink" title="卸载"></a>卸载</h3><p>若不再需要某个字体，可以<strong>删除相应字体</strong>文件，<strong>刷新系统字体缓存</strong>即可。 :)</p>
+<hr>
+<h2 id="u540E_u8BDD"><a href="#u540E_u8BDD" class="headerlink" title="后话"></a>后话</h2><p>根据需要，可以选择上述安装方法中的一种。如果编写自动化脚本，我们通常使用最后一种，即安装字体到<code>~/.fonts/</code>目录，<br>这种方法的优势在于，不需要管理员权限，无需值守，可自动安装。</p>
+<p>如果你想一次性安装多个字体， 或者想使用更酷的方式安装字体，不妨尝试写个脚本~</p>
+<p>PS  :  <strong><a href="https://github.com/fangwentong/dotfiles" target="_blank" rel="external">这里</a></strong>有个写好的系统配置脚本, 欢迎使用 :)</p>
+<p>完成安装后，就可以更改终端字体为<code>Monaco</code>啦，更改后的效果如下</p>
+<p><img src="/uploads/image/2014/05/terminator02.jpeg" alt="更改字体后终端截图" class="img-rounded"></p>
+<p>Have Fun!</p>
+<hr>
+<p>链接:  <a href="https://github.com/fangwentong/dotfiles" target="_blank" rel="external">我的系统配置</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p><strong>问题由来</strong></p>
+<p>在<a href="/2014/05/work-with-terminator/" target="_blank">安装Terminator</a><br>后，终端字体不够美观，于是就琢磨着安装新的字体来替代默认选项，下面以安装苹果的<code>Monaco</code>等宽字体为例，<br>来介绍在linux中安装字体的方法。</p>]]>
+    
+    </summary>
+    
+      <category term="config" scheme="http://blog.wentong.me/tags/config/"/>
+    
+      <category term="cheatsheet" scheme="http://blog.wentong.me/categories/cheatsheet/"/>
+    
+  </entry>
+  
+</feed>

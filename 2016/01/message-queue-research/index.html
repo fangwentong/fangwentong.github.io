@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=1.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="fangwentong, blog" />
+  <meta name="keywords" content="kafka,middleware," />
 
 
 
@@ -59,15 +59,24 @@
 
 
 
-<meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Wentong&#39;s Blog">
-<meta property="og:url" content="http://blog.wentong.me/index.html">
+<meta name="description" content="消息队列调研消息系统简介本次主要调研业界使用广泛的两款消息队列——RabbitMQ, Kafka， 以及阿里云的提供的两个服务， MNS和ONS.
+RabbitMQ
+RabbitMQ 是使用Erlang编写的一个开源的消息队列，本身支持很多的协议：AMQP，XMPP, SMTP, STOMP，也正因如此，它非常重量级，更适合于企业级的开发。同时实现了Broker构架，这意味着消息在发送给客户端时先">
+<meta property="og:type" content="article">
+<meta property="og:title" content="几款消息中间的调研">
+<meta property="og:url" content="http://blog.wentong.me/2016/01/message-queue-research/index.html">
 <meta property="og:site_name" content="Wentong&#39;s Blog">
-<meta property="og:description">
+<meta property="og:description" content="消息队列调研消息系统简介本次主要调研业界使用广泛的两款消息队列——RabbitMQ, Kafka， 以及阿里云的提供的两个服务， MNS和ONS.
+RabbitMQ
+RabbitMQ 是使用Erlang编写的一个开源的消息队列，本身支持很多的协议：AMQP，XMPP, SMTP, STOMP，也正因如此，它非常重量级，更适合于企业级的开发。同时实现了Broker构架，这意味着消息在发送给客户端时先">
+<meta property="og:image" content="http://blog.wentong.me/uploads/image/2016/kafka-consumer-qps.png">
+<meta property="og:image" content="http://blog.wentong.me/uploads/image/2016/kafka-consumer-qps.png">
+<meta property="og:updated_time" content="2016-01-19T11:40:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Wentong&#39;s Blog">
-<meta name="twitter:description">
+<meta name="twitter:title" content="几款消息中间的调研">
+<meta name="twitter:description" content="消息队列调研消息系统简介本次主要调研业界使用广泛的两款消息队列——RabbitMQ, Kafka， 以及阿里云的提供的两个服务， MNS和ONS.
+RabbitMQ
+RabbitMQ 是使用Erlang编写的一个开源的消息队列，本身支持很多的协议：AMQP，XMPP, SMTP, STOMP，也正因如此，它非常重量级，更适合于企业级的开发。同时实现了Broker构架，这意味着消息在发送给客户端时先">
 
 
 
@@ -85,7 +94,7 @@
   };
 </script>
 
-  <title> Wentong&#39;s Blog </title>
+  <title> 几款消息中间的调研 | Wentong&#39;s Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -114,9 +123,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -215,24 +222,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
 
+  <div id="posts" class="posts-expand">
     
-
-    
-    
-      
-      
-        
-        
-        
-      
-
-      
-    
-
-    
-      
 
   
   
@@ -252,10 +244,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/01/message-queue-research/" itemprop="url">
-                  几款消息中间的调研
-                </a>
+                几款消息中间的调研
               
             
           </h1>
@@ -319,9 +308,7 @@
       
 
       
-        
-          
-            <h2 id="u6D88_u606F_u961F_u5217_u8C03_u7814"><a href="#u6D88_u606F_u961F_u5217_u8C03_u7814" class="headerlink" title="消息队列调研"></a>消息队列调研</h2><h3 id="u6D88_u606F_u7CFB_u7EDF_u7B80_u4ECB"><a href="#u6D88_u606F_u7CFB_u7EDF_u7B80_u4ECB" class="headerlink" title="消息系统简介"></a>消息系统简介</h3><p>本次主要调研业界使用广泛的两款消息队列——RabbitMQ, Kafka， 以及阿里云的提供的两个服务， MNS和ONS.</p>
+        <h2 id="u6D88_u606F_u961F_u5217_u8C03_u7814"><a href="#u6D88_u606F_u961F_u5217_u8C03_u7814" class="headerlink" title="消息队列调研"></a>消息队列调研</h2><h3 id="u6D88_u606F_u7CFB_u7EDF_u7B80_u4ECB"><a href="#u6D88_u606F_u7CFB_u7EDF_u7B80_u4ECB" class="headerlink" title="消息系统简介"></a>消息系统简介</h3><p>本次主要调研业界使用广泛的两款消息队列——RabbitMQ, Kafka， 以及阿里云的提供的两个服务， MNS和ONS.</p>
 <h4 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h4><blockquote>
 <p><a href="http://www.rabbitmq.com" target="_blank" rel="external">RabbitMQ</a> 是使用Erlang编写的一个开源的消息队列，本身支持很多的协议：AMQP，XMPP, SMTP, STOMP，也正因如此，它非常重量级，更适合于企业级的开发。同时实现了Broker构架，这意味着消息在发送给客户端时先在中心队列排队。对路由，负载均衡或者数据持久化都有很好的支持。</p>
 </blockquote>
@@ -534,818 +521,47 @@
 <li><a href="http://blog.csdn.net/yangbutao/article/details/8741977" target="_blank" rel="external">Kafka, RabbitMQ对比</a></li>
 </ul>
 
-          
-        
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/03/Nginx-Local-Area-Network-Domain-Forward/" itemprop="url">
-                  使用Nginx做内网域名转发
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-03-25T00:00:00+08:00" content="2015-03-25">
-              2015-03-25
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/sumary/" itemprop="url" rel="index">
-                    <span itemprop="name">sumary</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
+            <a href="/tags/kafka/" rel="tag">#kafka</a>
           
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/03/Nginx-Local-Area-Network-Domain-Forward/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/Nginx-Local-Area-Network-Domain-Forward/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
+            <a href="/tags/middleware/" rel="tag">#middleware</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p>下面这个例子是通过具有公网IP的网关上的反向代理，将域名<code>demo.wenotng.me</code>的请求转发到内网机器<code>192.168.1.100</code>上，这样就可以在公网上通过域名<code>demo.wentong.me</code>访问内网的机器了.</p>
-<p>1) 第一步，添加一条A记录(Adress),  demo.wentong.me 指向网关的公网IP.</p>
-<p>2) 添加Nginx配置:</p>
-<p>网关服务器nginx配置:</p>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="comment"># /etc/nginx/sites-enable/demo</span></span><br><span class="line"><span class="title">server</span> &#123;</span><br><span class="line">    <span class="title">listen</span>   <span class="number">80</span>;</span><br><span class="line">    <span class="title">server_name</span>  demo.wentong.me;</span><br><span class="line"></span><br><span class="line">    <span class="title">access_log</span>  /var/log/nginx/demo.access.log;</span><br><span class="line"></span><br><span class="line">    <span class="title">location</span> / &#123;</span><br><span class="line">        <span class="title">proxy_redirect</span> <span class="built_in">off</span>;</span><br><span class="line">        <span class="title">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">        <span class="title">proxy_set_header</span> User-Agent <span class="variable">$http_user_agent</span>;</span><br><span class="line">        <span class="title">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="title">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        <span class="title">proxy_pass</span> <span class="url">http://192.168.1.100</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/03/Nginx-Local-Area-Network-Domain-Forward/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/03/Nginx-Local-Area-Network-Domain-Forward/" rel="next" title="使用Nginx做内网域名转发">
+                <i class="fa fa-chevron-left"></i> 使用Nginx做内网域名转发
+              </a>
+            
           </div>
-        
-      
-    </div>
 
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
-            
-              
-                
-                <a class="post-title-link" href="/2015/03/node-module-and-package/" itemprop="url">
-                  Nodejs笔记 -- 模块和包
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-03-05T00:00:00+08:00" content="2015-03-05">
-              2015-03-05
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/cheatsheet/" itemprop="url" rel="index">
-                    <span itemprop="name">cheatsheet</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/03/node-module-and-package/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/node-module-and-package/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          NodeJS中的模块和包机制, 介绍其使用和实现
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/03/node-module-and-package/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/01/ECMAScript-Reference-Types/" itemprop="url">
-                  ECMAScript引用类型简要笔记
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-01-20T00:00:00+08:00" content="2015-01-20">
-              2015-01-20
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/cheatsheet/" itemprop="url" rel="index">
-                    <span itemprop="name">cheatsheet</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/01/ECMAScript-Reference-Types/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/01/ECMAScript-Reference-Types/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          针对ECMAScript引用类型Object, Array, Date, RegExp, 以及基本包装类型的简要笔记
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/01/ECMAScript-Reference-Types/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
+    <div class="post-spread">
       
     </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/01/ECMAScript-Data-Type/" itemprop="url">
-                  ECMAScript 数据类型
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-01-18T00:00:00+08:00" content="2015-01-18">
-              2015-01-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/cheatsheet/" itemprop="url" rel="index">
-                    <span itemprop="name">cheatsheet</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/01/ECMAScript-Data-Type/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/01/ECMAScript-Data-Type/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          ECMAScript 基本数据类型介绍
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/01/ECMAScript-Data-Type/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/06/markdown-cheatsheet/" itemprop="url">
-                  Markdown 使用教程
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-06-03T00:00:00+08:00" content="2014-06-03">
-              2014-06-03
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/cheatsheet/" itemprop="url" rel="index">
-                    <span itemprop="name">cheatsheet</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/06/markdown-cheatsheet/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/06/markdown-cheatsheet/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          markdown 语法简介
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/06/markdown-cheatsheet/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/05/work-with-terminator/" itemprop="url">
-                  使用Terminator增强你的终端
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-05-30T00:00:00+08:00" content="2014-05-30">
-              2014-05-30
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/cheatsheet/" itemprop="url" rel="index">
-                    <span itemprop="name">cheatsheet</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/05/work-with-terminator/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/05/work-with-terminator/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          介绍一款Linux下强大好用的终端——Terminator(终结者)
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/05/work-with-terminator/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/05/add-fonts-to-your-linux/" itemprop="url">
-                  在linux中安装/卸载字体
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-05-30T00:00:00+08:00" content="2014-05-30">
-              2014-05-30
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/cheatsheet/" itemprop="url" rel="index">
-                    <span itemprop="name">cheatsheet</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/05/add-fonts-to-your-linux/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/05/add-fonts-to-your-linux/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><strong>问题由来</strong></p>
-<p>在<a href="/2014/05/work-with-terminator/" target="_blank">安装Terminator</a><br>后，终端字体不够美观，于是就琢磨着安装新的字体来替代默认选项，下面以安装苹果的<code>Monaco</code>等宽字体为例，<br>来介绍在linux中安装字体的方法。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/05/add-fonts-to-your-linux/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-
-  </section>
-
-  
+  </div>
 
 
           </div>
@@ -1353,6 +569,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/01/message-queue-research/"
+           data-title="几款消息中间的调研" data-url="http://blog.wentong.me/2016/01/message-queue-research/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -1372,8 +596,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars2.githubusercontent.com/u/5756771?v=3&s=460"
@@ -1461,6 +694,23 @@
       </section>
 
       
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#u6D88_u606F_u961F_u5217_u8C03_u7814"><span class="nav-number">1.</span> <span class="nav-text">消息队列调研</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u6D88_u606F_u7CFB_u7EDF_u7B80_u4ECB"><span class="nav-number">1.1.</span> <span class="nav-text">消息系统简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RabbitMQ"><span class="nav-number">1.1.1.</span> <span class="nav-text">RabbitMQ</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u963F_u91CC_u4E91MNS"><span class="nav-number">1.1.2.</span> <span class="nav-text">阿里云MNS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u963F_u91CC_u4E91ONS_/_RocketMQ"><span class="nav-number">1.1.3.</span> <span class="nav-text">阿里云ONS / RocketMQ</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Kafka"><span class="nav-number">1.1.4.</span> <span class="nav-text">Kafka</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kafka_2C_RabbitMQ_2C_MNS_2C_ONS_u5BF9_u6BD4"><span class="nav-number">1.2.</span> <span class="nav-text">Kafka, RabbitMQ, MNS, ONS对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u603B_u7ED3"><span class="nav-number">1.3.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#u9644_3A_LinkedIn_u56E2_u961F_u5BF9Kafka_2C_RabbitMQ_2C_ActiveMQ_u7684_u6027_u80FD_u7814_u7A76"><span class="nav-number">1.3.1.</span> <span class="nav-text">附: LinkedIn团队对Kafka, RabbitMQ, ActiveMQ的性能研究</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#u751F_u4EA7_u8005_u6D4B_u8BD5"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">生产者测试</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u6D88_u8D39_u8005_u6D4B_u8BD5"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">消费者测试</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
 
     </div>
   </aside>
@@ -1541,6 +791,167 @@
 
 
   
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=1.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
 
   
 

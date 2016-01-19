@@ -1,0 +1,907 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=1.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="markdown 教程" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Wentong&#39;s Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/?v=1.5.0" />
+
+
+
+
+
+
+<meta name="description" content="markdown 语法简介">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Markdown 使用教程">
+<meta property="og:url" content="http://blog.wentong.me/2014/06/markdown-cheatsheet/index.html">
+<meta property="og:site_name" content="Wentong&#39;s Blog">
+<meta property="og:description" content="markdown 语法简介">
+<meta property="og:updated_time" content="2016-01-19T11:50:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Markdown 使用教程">
+<meta name="twitter:description" content="markdown 语法简介">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Markdown 使用教程 | Wentong&#39;s Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?150cf9b09b17adb455e99b7f7a72fafd";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Wentong&#39;s Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Markdown 使用教程
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-06-03T00:00:00+08:00" content="2014-06-03">
+              2014-06-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/cheatsheet/" itemprop="url" rel="index">
+                    <span itemprop="name">cheatsheet</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/06/markdown-cheatsheet/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/06/markdown-cheatsheet/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Markdown_u7B80_u4ECB"><a href="#Markdown_u7B80_u4ECB" class="headerlink" title="Markdown简介"></a>Markdown简介</h2><p>wiki释义:</p>
+<blockquote>
+<p><code>Markdown</code> 是一种轻量级<code>标记语言</code>，创始人为约翰·格鲁伯（John Gruber）和亚伦·斯沃茨（Aaron Swartz）。<br>它允许人们“使用易读易写的纯文本格式编写文档，然后<strong>转换成有效的XHTML(或者HTML)文档</strong>”。<br>这种语言吸收了很多在电子邮件中已有的纯文本标记的特性。</p>
+</blockquote>
+<p>Markdown的优点包括但不限于以下几点:</p>
+<a id="more"></a>
+<ul>
+<li>纯文本，所以兼容性极强，可以用所有文本编辑器打开。</li>
+<li>让你专注于文字而不是排版。</li>
+<li>格式转换方便，Markdown 的文本你可以轻松转换为 html、电子书等。</li>
+<li>Markdown 的标记语法有极好的可读性。</li>
+</ul>
+<h2 id="Markdown_u8BED_u6CD5"><a href="#Markdown_u8BED_u6CD5" class="headerlink" title="Markdown语法"></a>Markdown语法</h2><p>Markdown语法简洁明了、容易学习，下面一一介绍。</p>
+<h3 id="u57FA_u672C_u7B26_u53F7"><a href="#u57FA_u672C_u7B26_u53F7" class="headerlink" title="基本符号"></a>基本符号</h3><ul>
+<li><code>*</code>, <code>-</code> , <code>+</code>： 这3个符号的效果都一样， 被称为Markdown符号</li>
+<li><code>空白行</code> : 表示另起一个段落,对应HTML中的 <code>&lt;p&gt;</code> 元素</li>
+<li><code>` </code>  表示 <code>内联代码</code>， <code>tab</code>是用来标记<code>代码段</code>，分别对应HTML的 <code>&lt;code&gt;</code> ， <code>&lt;pre&gt;</code> 元素</li>
+</ul>
+<h3 id="u6BB5_u843D_u6362_u884C"><a href="#u6BB5_u843D_u6362_u884C" class="headerlink" title="段落换行"></a>段落换行</h3><ul>
+<li><code>单个回车</code>会被解释为<code>空格</code></li>
+<li>一个空白行(即<code>两个回车</code>)变成单一段落<code>&lt;p&gt;</code></li>
+<li>连续3个Markdown符号，然后回车，表示<code>&lt;hr&gt;</code>横线</li>
+<li><strong>连续多个空格会被解释为单个空格</strong></li>
+</ul>
+<h3 id="u6807_u9898"><a href="#u6807_u9898" class="headerlink" title="标题"></a>标题</h3><ul>
+<li>在文字前面加上1-6个<code>#</code>来实现, 代表HTML中的六级标题 <code>h1</code>-<code>h6</code></li>
+<li><p>在文字左右各加1-3各符号，可本别实现斜体<code>&lt;i&gt;</code>、加粗<code>&lt;b&gt;</code>和斜体加粗</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># &#19968;&#32423;&#26631;&#39064;&#10;## &#20108;&#32423;&#26631;&#39064;&#10;### &#19977;&#32423;&#26631;&#39064;&#10;#### &#22235;&#32423;&#26631;&#39064;&#10;##### &#20116;&#32423;&#26631;&#39064;&#10;###### &#20845;&#32423;&#26631;&#39064;&#10;&#10;*&#26012;&#20307;*&#10;&#10;**&#21152;&#31895;**&#10;&#10;***&#21152;&#31895;&#26012;&#20307;***</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="u5F15_u7528"><a href="#u5F15_u7528" class="headerlink" title="引用"></a>引用</h3><ul>
+<li>在第一行加上 <code>&gt;</code> 和一个<code>空格</code>，表示引用，还可以嵌套, 对应HTML中的<code>&lt;blockquote&gt;</code>标签</li>
+</ul>
+<h3 id="u5217_u8868"><a href="#u5217_u8868" class="headerlink" title="列表"></a>列表</h3><ul>
+<li>使用*,+,-加上一个空格来表示,对应HTML中的<code>&lt;ul&gt;</code>标签</li>
+<li>可以支持嵌套</li>
+<li>有序列表用 <code>数字</code>+<code>.</code>+<code>空格</code> 来表示,对应HTML中的<code>&lt;ol&gt;</code>标签</li>
+<li><p>如果列表内容很长，不需要手工输入换行符，css控制段落的宽度，会自动的缩放的</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">**&#26080;&#24207;&#21015;&#34920;:**&#10;&#10;- &#26080;&#24207;&#21015;&#34920; 1&#10;- &#26080;&#24207;&#21015;&#34920; 2&#10;- &#26080;&#24207;&#21015;&#34920; 3&#10;&#10;**&#26377;&#24207;&#21015;&#34920;:**&#10;&#10;1. &#26377;&#24207;&#21015;&#34920; 1&#10;2. &#26377;&#24207;&#21015;&#34920; 2&#10;3. &#26377;&#24207;&#21015;&#34920; 3&#10;&#10;**&#21015;&#34920;&#23884;&#22871;:**&#10;&#10;- One&#10;    + What&#10;    + Why&#10;    + How&#10;- Two&#10;- Three</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>效果如下</strong></p>
+<p><strong>无序列表:</strong></p>
+<ul>
+<li>无序列表 1</li>
+<li>无序列表 2</li>
+<li>无序列表 3</li>
+</ul>
+<p><strong>有序列表:</strong></p>
+<ol>
+<li>有序列表 1</li>
+<li>有序列表 2</li>
+<li>有序列表 3</li>
+</ol>
+<p><strong>列表嵌套:</strong></p>
+<ul>
+<li>One<ul>
+<li>What</li>
+<li>Why</li>
+<li>How</li>
+</ul>
+</li>
+<li>Two</li>
+<li>Three</li>
+</ul>
+<h3 id="u94FE_u63A5"><a href="#u94FE_u63A5" class="headerlink" title="链接"></a>链接</h3><p>在 Markdown 中，插入链接只需要使用 <code>[显示文本](连接地址)</code>这种格式，<br>插入图片只需要使用<code>![图片描述](图片链接地址)</code>这种格式即可,其中前者对应于<br>HTML中的<code>a</code>标签，后者对应<code>img</code>标签，方括号中的图片描述为img标签的的<code>alt</code>属性值</p>
+<p>还有一种建立链接的方式，称为<code>参考式</code>, 参考式的链接是在链接文字的括号后面再接上另一个方括号， 而在第二个方括号里面要填入用以辨识链接的标记: <code>[显示文本][id]</code>或<code>![图片描述][id]</code>. 接着，在文件的任意处，你可以把这个标记的链接内容定义出来：<code>[id]: http://example.com/</code></p>
+<p>示例:</p>
+<pre><code>个人信息:
+
+[Wentong](http://www.fangwentong.com/)
+
+- [GitHub][1]
+- [Facebook][]
+- [Twitter][Weblog]
+
+[1]: https://github.com/fangwentong/
+[Facebook]: https://facebook.com/fangwentong/
+[Weblog]: https://twitter.com/fangwentong/
+</code></pre><p><strong>效果如下:</strong></p>
+<p>个人信息:</p>
+<p><a href="http://www.fangwentong.com/" target="_blank" rel="external">Wentong</a></p>
+<ul>
+<li><a href="https://github.com/fangwentong/" target="_blank" rel="external">GitHub</a></li>
+<li><a href="https://facebook.com/fangwentong/" target="_blank" rel="external">Facebook</a></li>
+<li><a href="https://twitter.com/fangwentong/" target="_blank" rel="external">Twitter</a></li>
+</ul>
+<h3 id="u8868_u683C"><a href="#u8868_u683C" class="headerlink" title="表格"></a>表格</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">| Tables        | Are           | Cool  |&#10;| ------------- |:-------------:| -----:|&#10;| col 3 is      | right-aligned | $1600 |&#10;| col 2 is      | centered      |   $12 |&#10;| zebra stripes | are neat      |    $1 |</span><br></pre></td></tr></table></figure>
+<h3 id="u7279_u6B8A_u7B26_u53F7"><a href="#u7279_u6B8A_u7B26_u53F7" class="headerlink" title="特殊符号"></a>特殊符号</h3><ul>
+<li>用<code>\</code> 来转义，表示文本中的markdown符号</li>
+</ul>
+<h3 id="u517C_u5BB9HTML_u8BED_u6CD5"><a href="#u517C_u5BB9HTML_u8BED_u6CD5" class="headerlink" title="兼容HTML语法"></a>兼容HTML语法</h3><p>我们知道，Markdown最终要通过Markdown解释器转换为HTML文档, 而Markdown是一种书写的格式，它的语法种类很少，只对应HTML标记中的一小部分, 不在Markdown涵盖范围内的标签， 可以直接在文档中用HTML书写.</p>
+<h3 id="u81EA_u5B9A_u4E49Markdown_u6837_u5F0F"><a href="#u81EA_u5B9A_u4E49Markdown_u6837_u5F0F" class="headerlink" title="自定义Markdown样式"></a>自定义Markdown样式</h3><p>注意到，Markdown解释器将Markdown文本转换为HTML文档，我们编写CSS，并在生成的HTML文档中引用这个样式表, 可以达到自定义Markdown显示风格的效果.</p>
+<h3 id="u51E0_u4E2A_u597D_u7528_u7684Markdown_u5DE5_u5177"><a href="#u51E0_u4E2A_u597D_u7528_u7684Markdown_u5DE5_u5177" class="headerlink" title="几个好用的Markdown工具"></a>几个好用的Markdown工具</h3><ul>
+<li>Chrome扩展 – <a href="https://chrome.google.com/webstore/detail/marxico/kidnkfckhbdkfgbicccmdggmpgogehop?utm_source=chrome-ntp-icon" target="_blank" rel="external">马克飞象</a></li>
+<li>Chrome插件 – <a href="https://chrome.google.com/webstore/detail/markdown-here/elifhakcjgalahccnjkneoccemfahfoa?utm_source=chrome-ntp-icon" target="_blank" rel="external">Markdown-here</a> 用Markdown写一封漂亮的电子邮件.</li>
+<li>Mac平台, 推荐使用<a href="http://mouapp.com/" target="_blank" rel="external">Mou</a></li>
+<li>Chrome插件 – <a href="https://chrome.google.com/webstore/detail/febilkbfcbhebfnokafefeacimjdckgl" target="_blank" rel="external">Markdown Preview Plus</a>, 实时预览网络或者本地Markdown文档.</li>
+</ul>
+<p>参考文章：</p>
+<ol>
+<li><a href="http://wowubuntu.com/markdown/" target="_blank" rel="external">官方文档(中文版)：Markdown 语法说明</a></li>
+<li><a href="http://lutaf.com/markdown-simple-usage.htm" target="_blank" rel="external">鲁塔弗：markdown 简明语法</a></li>
+<li><a href="http://jianshu.io/p/q81RER" target="_blank" rel="external">简书：献给写作者的 Markdown 新手指南</a></li>
+</ol>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/cheatsheet/" rel="tag">#cheatsheet</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/05/work-with-terminator/" rel="next" title="使用Terminator增强你的终端">
+                <i class="fa fa-chevron-left"></i> 使用Terminator增强你的终端
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/01/ECMAScript-Data-Type/" rel="prev" title="ECMAScript 数据类型">
+                ECMAScript 数据类型 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2014/06/markdown-cheatsheet/"
+           data-title="Markdown 使用教程" data-url="http://blog.wentong.me/2014/06/markdown-cheatsheet/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars2.githubusercontent.com/u/5756771?v=3&s=460"
+               alt="fangwentong" />
+          <p class="site-author-name" itemprop="name">fangwentong</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/fangwentong" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/fangwentong" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i> Twitter
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/fangwentong" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">友情链接</p>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.carpela.me" target="_blank">豪神的博客</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Markdown_u7B80_u4ECB"><span class="nav-number">1.</span> <span class="nav-text">Markdown简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Markdown_u8BED_u6CD5"><span class="nav-number">2.</span> <span class="nav-text">Markdown语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u57FA_u672C_u7B26_u53F7"><span class="nav-number">2.1.</span> <span class="nav-text">基本符号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u6BB5_u843D_u6362_u884C"><span class="nav-number">2.2.</span> <span class="nav-text">段落换行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u6807_u9898"><span class="nav-number">2.3.</span> <span class="nav-text">标题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u5F15_u7528"><span class="nav-number">2.4.</span> <span class="nav-text">引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u5217_u8868"><span class="nav-number">2.5.</span> <span class="nav-text">列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u94FE_u63A5"><span class="nav-number">2.6.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u8868_u683C"><span class="nav-number">2.7.</span> <span class="nav-text">表格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u7279_u6B8A_u7B26_u53F7"><span class="nav-number">2.8.</span> <span class="nav-text">特殊符号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u517C_u5BB9HTML_u8BED_u6CD5"><span class="nav-number">2.9.</span> <span class="nav-text">兼容HTML语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u81EA_u5B9A_u4E49Markdown_u6837_u5F0F"><span class="nav-number">2.10.</span> <span class="nav-text">自定义Markdown样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u51E0_u4E2A_u597D_u7528_u7684Markdown_u5DE5_u5177"><span class="nav-number">2.11.</span> <span class="nav-text">几个好用的Markdown工具</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">fangwentong</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=1.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=1.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=1.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=1.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=1.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=1.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"fangwentong"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+
+
+
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+  
+
+
+</body>
+</html>

@@ -1,0 +1,916 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=1.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ECMAScript," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Wentong&#39;s Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/?v=1.5.0" />
+
+
+
+
+
+
+<meta name="description" content="ECMAScript 基本数据类型介绍">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ECMAScript 数据类型">
+<meta property="og:url" content="http://blog.wentong.me/2015/01/ECMAScript-Data-Type/index.html">
+<meta property="og:site_name" content="Wentong&#39;s Blog">
+<meta property="og:description" content="ECMAScript 基本数据类型介绍">
+<meta property="og:updated_time" content="2016-01-19T11:50:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ECMAScript 数据类型">
+<meta name="twitter:description" content="ECMAScript 基本数据类型介绍">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> ECMAScript 数据类型 | Wentong&#39;s Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?150cf9b09b17adb455e99b7f7a72fafd";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Wentong&#39;s Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ECMAScript 数据类型
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-01-18T00:00:00+08:00" content="2015-01-18">
+              2015-01-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/cheatsheet/" itemprop="url" rel="index">
+                    <span itemprop="name">cheatsheet</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/01/ECMAScript-Data-Type/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/01/ECMAScript-Data-Type/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="u6570_u636E_u7C7B_u578B"><a href="#u6570_u636E_u7C7B_u578B" class="headerlink" title="数据类型"></a>数据类型</h3><p>ECMAScript 中有5种简单数据类型(也称基本数据类型): <code>Undefined</code>、<code>Null</code>、<code>Boolean</code>、<code>Number</code>和<code>String</code>， 还有一种复杂数据类型——<code>Object</code>， Object本质上是由一组无序的<code>键值对</code>组成的。 ECMAScript 不支持任何类型创建自定义类型的机制，而所有值都将是上述6种数据类型之一。 </p>
+<h4 id="typeof__u64CD_u4F5C_u7B26"><a href="#typeof__u64CD_u4F5C_u7B26" class="headerlink" title="typeof 操作符"></a>typeof 操作符</h4><p><code>typeof</code>操作符用于检测给定变量的数据类型， 该操作符可能返回下列某个字符串：</p>
+<ul>
+<li><code>&quot;undefined&quot;</code>  —— 如果这个值未定义；</li>
+<li><code>&quot;boolean&quot;</code> —— 如果这个值是布尔值；</li>
+<li><code>&quot;string&quot;</code> —— 如果这个值是字符串</li>
+<li><code>&quot;number&quot;</code> —— 如果这个值是数值</li>
+<li><code>&quot;object&quot;</code> —— 如果这个值是对象或<code>null</code></li>
+<li><code>&quot;function&quot;</code> —— 如果这个值是函数</li>
+</ul>
+<a id="more"></a>
+<h4 id="Undefined__u7C7B_u578B"><a href="#Undefined__u7C7B_u578B" class="headerlink" title="Undefined 类型"></a>Undefined 类型</h4><p>Undefined 类型只有一个值，即特殊的undefined， 在使用var生命变量但未对其加以初始化时，这个变量的值就是undefined。</p>
+<p>ECMA-262第 3 版之前的版本中并没有规定<code>undefined</code>这个值， 第3版引入这个值是为了正式区分空对象指针与未经初始化的变量.</p>
+<h4 id="Null__u7C7B_u578B"><a href="#Null__u7C7B_u578B" class="headerlink" title="Null 类型"></a>Null 类型</h4><p>Null类型也是一个只有一个值的数据类型， 这个特殊的值是null， 从逻辑角度看， null值表示一个空对象指针，而这正是使用typeof操作符检测null值时会返回”object”的原因.</p>
+<p>实际上，undefined 是派生自null值的， 因此<code>ECMA-262</code>规定对它们的相等性测试要返回<code>true</code>.</p>
+<p>只要意在保存对象的变量还没有真正地保存对象， 就应该明确地让该变量保存null 值， 这样，只要检查null值就可以知道相应的变量是否已经保存了一个对象的引用.</p>
+<h4 id="Boolean__u7C7B_u578B"><a href="#Boolean__u7C7B_u578B" class="headerlink" title="Boolean 类型"></a>Boolean 类型</h4><p>Boolean类型是ECMAScript中使用最多的一种类型， 该类型只有两个字面值: <code>true</code>和<code>false</code>， 这两个值与数字不是一回事， true不一定等于1， false也不一定等于0。</p>
+<p>需要注意的是， 虽然Boolean类型的字面值只有true和false两个， 但ECMAScript中所有类型的值都与这两个Boolean值等价的值。 要将一个值转换为其对应的Boolean值，可以调用转型函数<code>Boolean()</code>，如下:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> message = <span class="string">"hello"</span>;</span><br><span class="line"><span class="keyword">var</span> messageAsBoolean = <span class="built_in">Boolean</span>(message); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>其他类型与Boolean类型的转换规则:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">数据类型</th>
+<th style="text-align:center">转换为<code>true</code>的值</th>
+<th style="text-align:center">转换为<code>false</code>的值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Boolean</td>
+<td style="text-align:center">true</td>
+<td style="text-align:center">false</td>
+</tr>
+<tr>
+<td style="text-align:center">String</td>
+<td style="text-align:center">任何非空字符串</td>
+<td style="text-align:center">“”(空字符串)</td>
+</tr>
+<tr>
+<td style="text-align:center">Number</td>
+<td style="text-align:center">任何非零数值(包括无穷大)</td>
+<td style="text-align:center">0和NaN</td>
+</tr>
+<tr>
+<td style="text-align:center">Object</td>
+<td style="text-align:center">任何对象</td>
+<td style="text-align:center">null</td>
+</tr>
+<tr>
+<td style="text-align:center">Undefined</td>
+<td style="text-align:center">N/A(不适用)</td>
+<td style="text-align:center">undefined</td>
+</tr>
+</tbody>
+</table>
+<h4 id="Number__u7C7B_u578B"><a href="#Number__u7C7B_u578B" class="headerlink" title="Number 类型"></a>Number 类型</h4><ul>
+<li>整数值</li>
+<li>浮点数</li>
+</ul>
+<h5 id="u6570_u503C_u8303_u56F4"><a href="#u6570_u503C_u8303_u56F4" class="headerlink" title="数值范围"></a>数值范围</h5><p>ECMAScript 并不能保存世界上所有的数值， ECMAScript能够表示的最小数值保存在<code>Number.MIN_VALUE</code>中——在大多数浏览器中， 这个值是5e-324； 能够表示的最大数值保存在<code>Number.MAX_VALUE</code>中——在大多数浏览器中，这个值是1.7976931348623157e+308。 如果某次计算的结果得到了一个超出JavaScript数值范围的值，那么这个数值将会被自动转换成特殊的<code>Infinity</code>值， 具体来说， 如果这个数值是负数，会被转换成<code>-Infinity</code>(负无穷), 如果这个数值是正数，则会被转换为<code>Infinity</code>(正无穷)</p>
+<p>如果某次计算返回了正无穷或负无穷， 那么这个值将无法参与下一次的计算， 因为<code>Infinity</code>不是能够参与计算的数值。 判断一个数值是否是有穷的，可以使用<code>isFinite()</code>函数，这个函数在参数位于最小与最大值之间时会返回<code>true</code>.</p>
+<h5 id="NaN"><a href="#NaN" class="headerlink" title="NaN"></a>NaN</h5><p><strong>NaN</strong> (<em>Not a Number</em>),  即非数值是一个特殊的数值， 这个数值用于表示一个本来要返回数值的操作未返回数值的情况。 </p>
+<p>NaN 本身有两个非同寻常的特点</p>
+<ol>
+<li>任何涉及NaN的操作(例如NaN/10)都会返回NaN</li>
+<li><strong>NaN与任何值都不相等，包括NaN本身</strong></li>
+</ol>
+<p>针对NaN的这两个特点，ECMAScript定义了<code>isNaN()</code>函数，这个函数接受一个参数， 该参数可以是任何类型， 而函数会帮助我们确定这个参数是否”不是数值”。 <code>isNaN()</code>在接收到一个值之后，会尝试将这个值转换为数值， 某些不是数值的值会直接转换为数值，例如字符串”10”或Boolean值， 而任何不能被转换为数值的值都会导致这个函数返回<code>true</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">isNaN</span>(<span class="literal">NaN</span>); <span class="comment">//true</span></span><br><span class="line"><span class="built_in">isNaN</span>(<span class="number">10</span>);  <span class="comment">//true</span></span><br><span class="line"><span class="built_in">isNaN</span>(<span class="string">"10"</span>); <span class="comment">//true (可以被转换为数值10)</span></span><br><span class="line"><span class="built_in">isNaN</span>(<span class="literal">true</span>); <span class="comment">//true (可以被转换为数值1)</span></span><br><span class="line"><span class="built_in">isNaN</span>(<span class="string">"bule"</span>); <span class="comment">//false (不能被转换为数值)</span></span><br></pre></td></tr></table></figure>
+<h5 id="u6570_u503C_u8F6C_u6362"><a href="#u6570_u503C_u8F6C_u6362" class="headerlink" title="数值转换"></a>数值转换</h5><p>有三个函数可以把非数值转换为数值: <code>Number()</code>、<code>parseInt()</code>、<code>parseFloat()</code>。 <code>Number()</code>可以用于任何数据类型， 后两个函数专门用于<strong>把字符串转换为数值</strong>.</p>
+<p>Number()函数转换规则:</p>
+<ul>
+<li>如果是Boolean值， true和false分别被转换为1和0</li>
+<li>如果是数字值， 只是简单的传入和返回</li>
+<li>如果是null值， 返回0</li>
+<li>如果是undefined， 返回NaN</li>
+<li>如果是字符串，遵循以下规则<ul>
+<li>有效的数字形式会被转换为10进制，前导0会被忽略,也就是说，八进制会被当做十进制， “011”会变成11</li>
+<li>空字符串将被转换为0</li>
+<li>除此之外，其他字符串将会转换为NaN</li>
+</ul>
+</li>
+<li>如果是对象， 会调用对象的<code>valueOf()</code> 方法, 然后依照前面的规则转换返回的值。 如果转换的结果是NaN, 则调用对象的 <code>toString()</code>方法， 然后再次依照前面的规则转换返回的字符串值.</li>
+</ul>
+<p><code>parseInt()</code> 会忽略字符串前面的空格， 知道找到第一个非空格字符， 付过第一个字符不是数字字符或者负号， <code>parseInt()</code>就会返回NaN; 也就是说， parseInt()转换空字符串会返回NaN， 如果第一个字符是数字字符，parseInt()会继续解析第二个字符，直到解析完所有后序字符或者<strong>遇到一个非数字字符</strong>.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">parseInt</span>(<span class="string">"1234blue"</span>); <span class="comment">// 1234</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">""</span>);  <span class="comment">// NaN</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">"0xA"</span>); <span class="comment">// 10</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">"22.5"</span>); <span class="comment">// 22</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">"070"</span>); <span class="comment">// 56(ECMAScript 3)、 0(ECMAScript 5)</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">"70"</span>, <span class="number">8</span>); <span class="comment">// 56</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">"70"</span>);  <span class="comment">//70</span></span><br></pre></td></tr></table></figure>
+<p><code>parseInt()</code>可以指定第二个参数n,  函数会按照n进制解析字符串.</p>
+<h4 id="String__u7C7B_u578B"><a href="#String__u7C7B_u578B" class="headerlink" title="String 类型"></a>String 类型</h4><p>String 类型用于表示由零或多个16位Unicode字符组成的字符序列，即字符串。 字符串可以由单引号或者双引号表示， 在ECMAScript中，这两种表示方式并没有区别.</p>
+<h5 id="u7279_u70B9"><a href="#u7279_u70B9" class="headerlink" title="特点"></a>特点</h5><p>ECMAScript中的字符串是不可变的， 也就是说，字符串一旦创建，它们的值就不能改变， 要改变保存的字符串， 首先要销毁原来的字符串， 然后再用另一个包含新值的字符串填充该变量</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> lang  = <span class="string">"Java"</span>;</span><br><span class="line">lang = lang + <span class="string">"Script"</span>;</span><br></pre></td></tr></table></figure>
+<p>对于第二行代码，实现过程为： 首先创建一个能容纳10个字符的新字符串， 然后在这个字符串中填充”Java”和”Script”，最后一步是销毁原来的字符串”Java”和字符串”Script”, 因为这两个字符串已经没有用了。这一过程在后台发生，而这也是在某些旧版本浏览器中，拼接字符串时速度很慢的原因所在.</p>
+<h5 id="u8F6C_u6362_u4E3A_u5B57_u7B26_u4E32"><a href="#u8F6C_u6362_u4E3A_u5B57_u7B26_u4E32" class="headerlink" title="转换为字符串"></a>转换为字符串</h5><p>要把一个值转换为一个字符串有两种方式：第一种是使用几乎每个值都会有的<code>toString()</code>方法， </p>
+<p>数值、布尔值、对象和字符串值都有<code>toString()</code>方法，多数情况下，该方法不需要传递参数， 但是，在调用数值的<code>toString()</code>方法时，可以传递一个参数: 输出数值的基数.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">10</span>;</span><br><span class="line">num.toString();  <span class="comment">// "10"</span></span><br><span class="line">num.toString(<span class="number">2</span>); <span class="comment">// "1010"</span></span><br><span class="line">num.toString(<span class="number">8</span>); <span class="comment">// "12"</span></span><br><span class="line">num.toString(<span class="number">10</span>); <span class="comment">// "10"</span></span><br><span class="line">num.toString(<span class="number">16</span>); <span class="comment">// "a"</span></span><br></pre></td></tr></table></figure>
+<p>在不知道要转换的值是不是<code>null</code>或<code>undefined</code>的情况下， 还可以使用函数<code>String()</code>, 这个函数能够将任何类型的值转换为字符串.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> value1 = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">var</span> value2 = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">var</span> value3 = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">var</span> value4;</span><br><span class="line"></span><br><span class="line"><span class="built_in">String</span>(value1);  <span class="comment">// "10"</span></span><br><span class="line"><span class="built_in">String</span>(value2);  <span class="comment">// "true"</span></span><br><span class="line"><span class="built_in">String</span>(value3);  <span class="comment">// "null"</span></span><br><span class="line"><span class="built_in">String</span>(value4);  <span class="comment">// "undefined"</span></span><br></pre></td></tr></table></figure>
+<h4 id="Object__u7C7B_u578B"><a href="#Object__u7C7B_u578B" class="headerlink" title="Object 类型"></a>Object 类型</h4><p>ECMAScript中的对象其实就是一组数据和功能的集合。 对象可以通过执行 <code>new</code>操作符后跟要创建的对象类型的名称来创建。 而创建<code>Object</code>类型的实力并为其添加属性或方法，就可以创建自定义对象.</p>
+<p>在ECMAScript中， 如果不给构造函数传递参数，则可以省略后面的那一对圆括号.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>;  <span class="comment">// 两者是等价的， 但不推荐后者</span></span><br></pre></td></tr></table></figure>
+<p>Object的每个实例都具有下列属性和方法:</p>
+<ul>
+<li><code>Constructor</code> :  保存着用于创建当前对象的函数， 对于前面的例子而言，构造函数就是Object();</li>
+<li><code>hasOwnProperty(propertyName)</code> : 检查给定的属性是否在当前实例对象中</li>
+<li><code>isPrototypeOf(object)</code> :  用于检查传入的对象是否是另一对象的原型</li>
+<li><code>propertyIsEnumerable(propertyName)</code> : 用于检查给定的属性是否能够使用<code>for-in</code>语句来枚举</li>
+<li><code>toLocaleString()</code> : 返回对象的字符串表示，该字符串与执行环境的地区对应</li>
+<li><code>toString()</code> : 返回对象的字符串表示</li>
+<li><code>valueOf()</code> : 返回对象的字符串、数值或者布尔值表示。</li>
+</ul>
+<p>参考资料:</p>
+<ul>
+<li>JavaScript 高级程序设计</li>
+</ul>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ECMAScript/" rel="tag">#ECMAScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/06/markdown-cheatsheet/" rel="next" title="Markdown 使用教程">
+                <i class="fa fa-chevron-left"></i> Markdown 使用教程
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/01/ECMAScript-Reference-Types/" rel="prev" title="ECMAScript引用类型简要笔记">
+                ECMAScript引用类型简要笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/01/ECMAScript-Data-Type/"
+           data-title="ECMAScript 数据类型" data-url="http://blog.wentong.me/2015/01/ECMAScript-Data-Type/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars2.githubusercontent.com/u/5756771?v=3&s=460"
+               alt="fangwentong" />
+          <p class="site-author-name" itemprop="name">fangwentong</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/fangwentong" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/fangwentong" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i> Twitter
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/fangwentong" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">友情链接</p>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.carpela.me" target="_blank">豪神的博客</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#u6570_u636E_u7C7B_u578B"><span class="nav-number">1.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#typeof__u64CD_u4F5C_u7B26"><span class="nav-number">1.1.</span> <span class="nav-text">typeof 操作符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Undefined__u7C7B_u578B"><span class="nav-number">1.2.</span> <span class="nav-text">Undefined 类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Null__u7C7B_u578B"><span class="nav-number">1.3.</span> <span class="nav-text">Null 类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Boolean__u7C7B_u578B"><span class="nav-number">1.4.</span> <span class="nav-text">Boolean 类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Number__u7C7B_u578B"><span class="nav-number">1.5.</span> <span class="nav-text">Number 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#u6570_u503C_u8303_u56F4"><span class="nav-number">1.5.1.</span> <span class="nav-text">数值范围</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#NaN"><span class="nav-number">1.5.2.</span> <span class="nav-text">NaN</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u6570_u503C_u8F6C_u6362"><span class="nav-number">1.5.3.</span> <span class="nav-text">数值转换</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#String__u7C7B_u578B"><span class="nav-number">1.6.</span> <span class="nav-text">String 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#u7279_u70B9"><span class="nav-number">1.6.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u8F6C_u6362_u4E3A_u5B57_u7B26_u4E32"><span class="nav-number">1.6.2.</span> <span class="nav-text">转换为字符串</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Object__u7C7B_u578B"><span class="nav-number">1.7.</span> <span class="nav-text">Object 类型</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">fangwentong</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=1.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=1.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=1.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=1.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=1.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=1.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"fangwentong"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+
+
+
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+  
+
+
+</body>
+</html>
