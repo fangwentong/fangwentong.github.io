@@ -52,7 +52,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/?v=1.5.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.5.0" />
 
 
 
@@ -60,19 +60,28 @@
 
 
 <meta name="description" content="问题由来
-在安装Terminator后，终端字体不够美观，于是就琢磨着安装新的字体来替代默认选项，下面以安装苹果的Monaco等宽字体为例，来介绍在linux中安装字体的方法。">
+在安装Terminator后，终端字体不够美观，于是就琢磨着安装新的字体来替代默认选项，下面以安装苹果的Monaco等宽字体为例，来介绍在linux中安装字体的方法。
+安装安装字体可以使用图形化的字体查看器，也可以通过命令在命令行中安装。
+
+一. Ubuntu中利用字体查看器安装首先到这里下载Monaco字体, 然后在Ubuntu系统中，双击下载得到的Monaco.ttf文件，即用系统自">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在linux中安装/卸载字体">
 <meta property="og:url" content="http://blog.wentong.me/2014/05/add-fonts-to-your-linux/index.html">
 <meta property="og:site_name" content="Wentong&#39;s Blog">
 <meta property="og:description" content="问题由来
-在安装Terminator后，终端字体不够美观，于是就琢磨着安装新的字体来替代默认选项，下面以安装苹果的Monaco等宽字体为例，来介绍在linux中安装字体的方法。">
+在安装Terminator后，终端字体不够美观，于是就琢磨着安装新的字体来替代默认选项，下面以安装苹果的Monaco等宽字体为例，来介绍在linux中安装字体的方法。
+安装安装字体可以使用图形化的字体查看器，也可以通过命令在命令行中安装。
+
+一. Ubuntu中利用字体查看器安装首先到这里下载Monaco字体, 然后在Ubuntu系统中，双击下载得到的Monaco.ttf文件，即用系统自">
 <meta property="og:image" content="http://blog.wentong.me/uploads/image/2014/05/terminator02.jpeg">
-<meta property="og:updated_time" content="2016-01-19T11:06:19.000Z">
+<meta property="og:updated_time" content="2016-01-19T12:17:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在linux中安装/卸载字体">
 <meta name="twitter:description" content="问题由来
-在安装Terminator后，终端字体不够美观，于是就琢磨着安装新的字体来替代默认选项，下面以安装苹果的Monaco等宽字体为例，来介绍在linux中安装字体的方法。">
+在安装Terminator后，终端字体不够美观，于是就琢磨着安装新的字体来替代默认选项，下面以安装苹果的Monaco等宽字体为例，来介绍在linux中安装字体的方法。
+安装安装字体可以使用图形化的字体查看器，也可以通过命令在命令行中安装。
+
+一. Ubuntu中利用字体查看器安装首先到这里下载Monaco字体, 然后在Ubuntu系统中，双击下载得到的Monaco.ttf文件，即用系统自">
 
 
 
@@ -306,11 +315,11 @@
       
         <p><strong>问题由来</strong></p>
 <p>在<a href="/2014/05/work-with-terminator/" target="_blank">安装Terminator</a><br>后，终端字体不够美观，于是就琢磨着安装新的字体来替代默认选项，下面以安装苹果的<code>Monaco</code>等宽字体为例，<br>来介绍在linux中安装字体的方法。</p>
-<a id="more"></a>
 <h2 id="u5B89_u88C5"><a href="#u5B89_u88C5" class="headerlink" title="安装"></a>安装</h2><p>安装字体可以使用图形化的字体查看器，也可以通过命令在命令行中安装。</p>
 <hr>
 <h3 id="u4E00-_Ubuntu_u4E2D_u5229_u7528_u5B57_u4F53_u67E5_u770B_u5668_u5B89_u88C5"><a href="#u4E00-_Ubuntu_u4E2D_u5229_u7528_u5B57_u4F53_u67E5_u770B_u5668_u5B89_u88C5" class="headerlink" title="一. Ubuntu中利用字体查看器安装"></a>一. Ubuntu中利用字体查看器安装</h3><p>首先到<a href="https://github.com/fangwentong/dotfiles/raw/master/ubuntu-gui/fonts/Monaco.ttf" target="_blank" rel="external">这里</a>下载<code>Monaco</code>字体, 然后在<code>Ubuntu</code>系统中，双击下载得到的Monaco.ttf文件，即用系统自带的字体查看器打开了该文件，点击面板上的<code>安装</code>按钮，即可完成安装,这种方法安装后，字体文件存放在<code>~/.local/share/fonts</code>目录下。</p>
 <p>这种方法的优点是安装前能预览字体效果，安装过程简单便捷，动几下鼠标就完成了安装，非常适合在图形界面下安装; 缺点是安装借助图形化工具，无法通过自动化脚本安装。</p>
+<a id="more"></a>
 <h3 id="u4E8C-__u901A_u8FC7_u547D_u4EE4_u5B89_u88C5_u5B57_u4F53"><a href="#u4E8C-__u901A_u8FC7_u547D_u4EE4_u5B89_u88C5_u5B57_u4F53" class="headerlink" title="二. 通过命令安装字体"></a>二. 通过命令安装字体</h3><p><code>linux</code>系统的字体文件放在<code>/usr/share/fonts/</code>目录以及用户的<code>~/.fonts</code>和<code>~/.local/share/fonts</code>目录下，第一个位置为系统所用用户共享，将字体安装到这个目录需要管理员权限；后面两个位置则为当前登陆用户所有,安装字体到这个目录不需要管理员权限。</p>
 <ol>
 <li>安装到 /usr/share/fonts/ (需要管理员权限)</li>

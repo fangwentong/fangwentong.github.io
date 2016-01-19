@@ -285,7 +285,7 @@
     <link href="http://blog.wentong.me/2015/03/node-module-and-package/"/>
     <id>http://blog.wentong.me/2015/03/node-module-and-package/</id>
     <published>2015-03-04T16:00:00.000Z</published>
-    <updated>2016-01-19T11:50:13.000Z</updated>
+    <updated>2016-01-19T12:18:43.000Z</updated>
     <content type="html"><![CDATA[<h3 id="u57FA_u672C_u6982_u5FF5"><a href="#u57FA_u672C_u6982_u5FF5" class="headerlink" title="基本概念"></a>基本概念</h3><p><strong>包</strong>是实现了某些<strong>功能模块的集合</strong>，它将摸个独立的功能封装起来， 用于发布、更新、依赖管理和版本控制.</p>
 <p>模块和文件是一一对应的， 一个Node.js文件就是一个模块(类似于python的模块)，这个文件可能是<strong>JavaScript代码</strong> (*.js)， <strong>JSON</strong>(*.json)或者<strong>编译过的C/C++扩展</strong>(*.node).</p>
 <h4 id="u521B_u5EFA_u6A21_u5757"><a href="#u521B_u5EFA_u6A21_u5757" class="headerlink" title="创建模块"></a>创建模块</h4><p>创建模块非常简单，因为<strong>一个文件就是一个模块</strong>， 我们需要关注的是如何在其他文件中获取这个模块.</p>
@@ -388,12 +388,11 @@
     <link href="http://blog.wentong.me/2015/01/ECMAScript-Reference-Types/"/>
     <id>http://blog.wentong.me/2015/01/ECMAScript-Reference-Types/</id>
     <published>2015-01-19T16:00:00.000Z</published>
-    <updated>2016-01-19T11:50:47.000Z</updated>
+    <updated>2016-01-19T12:18:08.000Z</updated>
     <content type="html"><![CDATA[<h3 id="1-_Object"><a href="#1-_Object" class="headerlink" title="1. Object"></a>1. Object</h3><ol>
 <li>可以通过<code>对象字面量</code>的方式定义</li>
 <li>通过方括号或者<code>.</code>号进行访问</li>
 </ol>
-<a id="more"></a>
 <h3 id="2-_Array"><a href="#2-_Array" class="headerlink" title="2. Array"></a>2. Array</h3><ol>
 <li>数组内部数据类型可以不同，大小可以动态调整</li>
 <li>使用方括号表示法或者构造函数创建</li>
@@ -415,6 +414,7 @@
 </ul>
 </li>
 </ol>
+<a id="more"></a>
 <h3 id="3-_Date"><a href="#3-_Date" class="headerlink" title="3. Date"></a>3. Date</h3><h3 id="4-_RegExp"><a href="#4-_RegExp" class="headerlink" title="4. RegExp"></a>4. RegExp</h3><ol>
 <li>使用字面量或者<code>RegExp()</code>构造函数定义正则表达式， <code>RegExp()</code>接受两个字符串: 模式和标志</li>
 <li>实例属性<ul>
@@ -491,7 +491,7 @@
     <link href="http://blog.wentong.me/2015/01/ECMAScript-Data-Type/"/>
     <id>http://blog.wentong.me/2015/01/ECMAScript-Data-Type/</id>
     <published>2015-01-17T16:00:00.000Z</published>
-    <updated>2016-01-19T11:50:58.000Z</updated>
+    <updated>2016-01-19T12:17:58.000Z</updated>
     <content type="html"><![CDATA[<h3 id="u6570_u636E_u7C7B_u578B"><a href="#u6570_u636E_u7C7B_u578B" class="headerlink" title="数据类型"></a>数据类型</h3><p>ECMAScript 中有5种简单数据类型(也称基本数据类型): <code>Undefined</code>、<code>Null</code>、<code>Boolean</code>、<code>Number</code>和<code>String</code>， 还有一种复杂数据类型——<code>Object</code>， Object本质上是由一组无序的<code>键值对</code>组成的。 ECMAScript 不支持任何类型创建自定义类型的机制，而所有值都将是上述6种数据类型之一。 </p>
 <h4 id="typeof__u64CD_u4F5C_u7B26"><a href="#typeof__u64CD_u4F5C_u7B26" class="headerlink" title="typeof 操作符"></a>typeof 操作符</h4><p><code>typeof</code>操作符用于检测给定变量的数据类型， 该操作符可能返回下列某个字符串：</p>
 <ul>
@@ -623,13 +623,12 @@
     <link href="http://blog.wentong.me/2014/06/markdown-cheatsheet/"/>
     <id>http://blog.wentong.me/2014/06/markdown-cheatsheet/</id>
     <published>2014-06-02T16:00:00.000Z</published>
-    <updated>2016-01-19T11:50:38.000Z</updated>
+    <updated>2016-01-19T12:18:32.000Z</updated>
     <content type="html"><![CDATA[<h2 id="Markdown_u7B80_u4ECB"><a href="#Markdown_u7B80_u4ECB" class="headerlink" title="Markdown简介"></a>Markdown简介</h2><p>wiki释义:</p>
 <blockquote>
 <p><code>Markdown</code> 是一种轻量级<code>标记语言</code>，创始人为约翰·格鲁伯（John Gruber）和亚伦·斯沃茨（Aaron Swartz）。<br>它允许人们“使用易读易写的纯文本格式编写文档，然后<strong>转换成有效的XHTML(或者HTML)文档</strong>”。<br>这种语言吸收了很多在电子邮件中已有的纯文本标记的特性。</p>
 </blockquote>
 <p>Markdown的优点包括但不限于以下几点:</p>
-<a id="more"></a>
 <ul>
 <li>纯文本，所以兼容性极强，可以用所有文本编辑器打开。</li>
 <li>让你专注于文字而不是排版。</li>
@@ -648,6 +647,7 @@
 <li>连续3个Markdown符号，然后回车，表示<code>&lt;hr&gt;</code>横线</li>
 <li><strong>连续多个空格会被解释为单个空格</strong></li>
 </ul>
+<a id="more"></a>
 <h3 id="u6807_u9898"><a href="#u6807_u9898" class="headerlink" title="标题"></a>标题</h3><ul>
 <li>在文字前面加上1-6个<code>#</code>来实现, 代表HTML中的六级标题 <code>h1</code>-<code>h6</code></li>
 <li><p>在文字左右各加1-3各符号，可本别实现斜体<code>&lt;i&gt;</code>、加粗<code>&lt;b&gt;</code>和斜体加粗</p>
@@ -746,24 +746,18 @@
     <link href="http://blog.wentong.me/2014/05/work-with-terminator/"/>
     <id>http://blog.wentong.me/2014/05/work-with-terminator/</id>
     <published>2014-05-29T16:00:00.000Z</published>
-    <updated>2016-01-19T11:50:03.000Z</updated>
-    <content type="html"><![CDATA[<p>##简介</p>
-<p>在<code>linux</code>下编程怎能缺少一个功能强大的终端，这里向大家介绍一款广受好评的终端——<code>Terminator</code>(终结者).</p>
+    <updated>2016-01-19T12:18:59.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="u7B80_u4ECB"><a href="#u7B80_u4ECB" class="headerlink" title="简介"></a>简介</h2><p>在<code>linux</code>下编程怎能缺少一个功能强大的终端，这里向大家介绍一款广受好评的终端——<code>Terminator</code>(终结者).</p>
 <p>Terminator 是CrunchBang的默认终端，该终端基于 GNOME terminal。Terminator最大的特点就是可以在一个窗口中打开多个终端,<br>可以自由的将一个终端区域横向或纵向分割建立新终端，通过鼠标拉伸调整每个终端的大小，对需要同时使用多个终端的用户非常方便。</p>
+<hr>
+<h2 id="u5B89_u88C5"><a href="#u5B89_u88C5" class="headerlink" title="安装"></a>安装</h2><h3 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get install terminator</span><br></pre></td></tr></table></figure>
+<h3 id="Fedora"><a href="#Fedora" class="headerlink" title="Fedora"></a>Fedora</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo yum install terminator</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <hr>
-<p>##安装</p>
-<p>###Ubuntu</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get install terminator</span><br></pre></td></tr></table></figure>
-<p>###Fedora</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo yum install terminator</span><br></pre></td></tr></table></figure>
-<hr>
-<p>##常用快捷键</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Ctrl+Shift+E    &#22402;&#30452;&#20998;&#21106;&#31383;&#21475;&#10;Ctrl+Shift+O    &#27700;&#24179;&#20998;&#21106;&#31383;&#21475;&#10;    F11         &#20840;&#23631;&#10;Ctrl+Shift+C    &#22797;&#21046;&#10;Ctrl+Shift+V    &#31896;&#36148;&#10;Ctrl+Shift+N    &#25110;&#32773; Ctrl+Tab &#22312;&#20998;&#21106;&#30340;&#21508;&#31383;&#21475;&#20043;&#38388;&#20999;&#25442;&#10;Ctrl+Shift+X    &#23558;&#20998;&#21106;&#30340;&#26576;&#19968;&#20010;&#31383;&#21475;&#25918;&#22823;&#33267;&#20840;&#23631;&#20351;&#29992;&#10;Ctrl+Shift+Z    &#20174;&#25918;&#22823;&#33267;&#20840;&#23631;&#30340;&#26576;&#19968;&#31383;&#21475;&#22238;&#21040;&#22810;&#31383;&#26684;&#30028;&#38754;</span><br></pre></td></tr></table></figure>
+<h2 id="u5E38_u7528_u5FEB_u6377_u952E"><a href="#u5E38_u7528_u5FEB_u6377_u952E" class="headerlink" title="常用快捷键"></a>常用快捷键</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Ctrl+Shift+E    &#22402;&#30452;&#20998;&#21106;&#31383;&#21475;&#10;Ctrl+Shift+O    &#27700;&#24179;&#20998;&#21106;&#31383;&#21475;&#10;    F11         &#20840;&#23631;&#10;Ctrl+Shift+C    &#22797;&#21046;&#10;Ctrl+Shift+V    &#31896;&#36148;&#10;Ctrl+Shift+N    &#25110;&#32773; Ctrl+Tab &#22312;&#20998;&#21106;&#30340;&#21508;&#31383;&#21475;&#20043;&#38388;&#20999;&#25442;&#10;Ctrl+Shift+X    &#23558;&#20998;&#21106;&#30340;&#26576;&#19968;&#20010;&#31383;&#21475;&#25918;&#22823;&#33267;&#20840;&#23631;&#20351;&#29992;&#10;Ctrl+Shift+Z    &#20174;&#25918;&#22823;&#33267;&#20840;&#23631;&#30340;&#26576;&#19968;&#31383;&#21475;&#22238;&#21040;&#22810;&#31383;&#26684;&#30028;&#38754;</span><br></pre></td></tr></table></figure>
 <p>快捷键可以自己更改</p>
-<p>##优化配置</p>
-<p>安装完成后，从应用程序菜单中找到Terminator并启动，尝试使用上文介绍的快捷键切出几个窗口, 效果如下：</p>
-<p><img src="/2014/05/terminator01.jpg" alt="调整前的终端" class="img-rounded"></p>
+<h2 id="u4F18_u5316_u914D_u7F6E"><a href="#u4F18_u5316_u914D_u7F6E" class="headerlink" title="优化配置"></a>优化配置</h2><p>安装完成后，从应用程序菜单中找到Terminator并启动，尝试使用上文介绍的快捷键切出几个窗口, 效果如下：</p>
+<p><img src="/uploads/image/2014/05/terminator01.jpg" alt="调整前的终端" class="img-rounded"></p>
 <p>注意到界面不是太美观， 字体出现重叠现象，影响工作， 这里推荐使用苹果的<code>Monaco</code>等宽字体<br>作为终端默认字体,  中文字体推荐使用<code>文泉驿微米黑</code>, 可避免中文显示出现锯齿.</p>
 <p>Ubuntu下安装字体可以参考 <a href="/2014/05/add-fonts-to-your-linux/" target="_blank">这篇文章</a>,<br>Terminator 的其他配置，如背景透明、字体颜色等， 可以右击终端区域,在<code>Preferences</code>中进行设置，这里不一一介绍了.</p>
 <p>我的Terminator配置文件在 <strong><a href="https://github.com/fangwentong/dotfiles/blob/master/ubuntu-gui/terminator/config" target="_blank" rel="external">这里</a></strong> 可以找到,<br>更多配置及说明请参考 <a href="https://github.com/fangwentong/dotfiles" target="_blank" rel="external">说明文档</a>.</p>
@@ -787,14 +781,14 @@
     <link href="http://blog.wentong.me/2014/05/add-fonts-to-your-linux/"/>
     <id>http://blog.wentong.me/2014/05/add-fonts-to-your-linux/</id>
     <published>2014-05-29T16:00:00.000Z</published>
-    <updated>2016-01-19T11:06:19.000Z</updated>
+    <updated>2016-01-19T12:17:46.000Z</updated>
     <content type="html"><![CDATA[<p><strong>问题由来</strong></p>
 <p>在<a href="/2014/05/work-with-terminator/" target="_blank">安装Terminator</a><br>后，终端字体不够美观，于是就琢磨着安装新的字体来替代默认选项，下面以安装苹果的<code>Monaco</code>等宽字体为例，<br>来介绍在linux中安装字体的方法。</p>
-<a id="more"></a>
 <h2 id="u5B89_u88C5"><a href="#u5B89_u88C5" class="headerlink" title="安装"></a>安装</h2><p>安装字体可以使用图形化的字体查看器，也可以通过命令在命令行中安装。</p>
 <hr>
 <h3 id="u4E00-_Ubuntu_u4E2D_u5229_u7528_u5B57_u4F53_u67E5_u770B_u5668_u5B89_u88C5"><a href="#u4E00-_Ubuntu_u4E2D_u5229_u7528_u5B57_u4F53_u67E5_u770B_u5668_u5B89_u88C5" class="headerlink" title="一. Ubuntu中利用字体查看器安装"></a>一. Ubuntu中利用字体查看器安装</h3><p>首先到<a href="https://github.com/fangwentong/dotfiles/raw/master/ubuntu-gui/fonts/Monaco.ttf" target="_blank" rel="external">这里</a>下载<code>Monaco</code>字体, 然后在<code>Ubuntu</code>系统中，双击下载得到的Monaco.ttf文件，即用系统自带的字体查看器打开了该文件，点击面板上的<code>安装</code>按钮，即可完成安装,这种方法安装后，字体文件存放在<code>~/.local/share/fonts</code>目录下。</p>
 <p>这种方法的优点是安装前能预览字体效果，安装过程简单便捷，动几下鼠标就完成了安装，非常适合在图形界面下安装; 缺点是安装借助图形化工具，无法通过自动化脚本安装。</p>
+<a id="more"></a>
 <h3 id="u4E8C-__u901A_u8FC7_u547D_u4EE4_u5B89_u88C5_u5B57_u4F53"><a href="#u4E8C-__u901A_u8FC7_u547D_u4EE4_u5B89_u88C5_u5B57_u4F53" class="headerlink" title="二. 通过命令安装字体"></a>二. 通过命令安装字体</h3><p><code>linux</code>系统的字体文件放在<code>/usr/share/fonts/</code>目录以及用户的<code>~/.fonts</code>和<code>~/.local/share/fonts</code>目录下，第一个位置为系统所用用户共享，将字体安装到这个目录需要管理员权限；后面两个位置则为当前登陆用户所有,安装字体到这个目录不需要管理员权限。</p>
 <ol>
 <li>安装到 /usr/share/fonts/ (需要管理员权限)</li>
@@ -817,7 +811,11 @@
 ]]></content>
     <summary type="html">
     <![CDATA[<p><strong>问题由来</strong></p>
-<p>在<a href="/2014/05/work-with-terminator/" target="_blank">安装Terminator</a><br>后，终端字体不够美观，于是就琢磨着安装新的字体来替代默认选项，下面以安装苹果的<code>Monaco</code>等宽字体为例，<br>来介绍在linux中安装字体的方法。</p>]]>
+<p>在<a href="/2014/05/work-with-terminator/" target="_blank">安装Terminator</a><br>后，终端字体不够美观，于是就琢磨着安装新的字体来替代默认选项，下面以安装苹果的<code>Monaco</code>等宽字体为例，<br>来介绍在linux中安装字体的方法。</p>
+<h2 id="u5B89_u88C5"><a href="#u5B89_u88C5" class="headerlink" title="安装"></a>安装</h2><p>安装字体可以使用图形化的字体查看器，也可以通过命令在命令行中安装。</p>
+<hr>
+<h3 id="u4E00-_Ubuntu_u4E2D_u5229_u7528_u5B57_u4F53_u67E5_u770B_u5668_u5B89_u88C5"><a href="#u4E00-_Ubuntu_u4E2D_u5229_u7528_u5B57_u4F53_u67E5_u770B_u5668_u5B89_u88C5" class="headerlink" title="一. Ubuntu中利用字体查看器安装"></a>一. Ubuntu中利用字体查看器安装</h3><p>首先到<a href="https://github.com/fangwentong/dotfiles/raw/master/ubuntu-gui/fonts/Monaco.ttf">这里</a>下载<code>Monaco</code>字体, 然后在<code>Ubuntu</code>系统中，双击下载得到的Monaco.ttf文件，即用系统自带的字体查看器打开了该文件，点击面板上的<code>安装</code>按钮，即可完成安装,这种方法安装后，字体文件存放在<code>~/.local/share/fonts</code>目录下。</p>
+<p>这种方法的优点是安装前能预览字体效果，安装过程简单便捷，动几下鼠标就完成了安装，非常适合在图形界面下安装; 缺点是安装借助图形化工具，无法通过自动化脚本安装。</p>]]>
     
     </summary>
     
